@@ -1,0 +1,11 @@
+{
+  "prisma-smart-formatter.typescript.defaultFormatter": "rome.rome",
+  "prisma-smart-formatter.typescriptreact.defaultFormatter": "vscode.typescript-language-features",
+  "editor.defaultFormatter": "rome.rome",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "json.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.rome": true
+  }
+}
