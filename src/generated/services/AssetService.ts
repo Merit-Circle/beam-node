@@ -14,21 +14,16 @@ export class AssetService {
 
   /**
    * Transfer an asset
-   * @param xApiKey Beam API key
    * @param requestBody
    * @returns TransferAssetResponse
    * @throws ApiError
    */
   public createTransaction(
-    xApiKey: string,
     requestBody: TransferAssetRequestInput,
   ): CancelablePromise<TransferAssetResponse> {
     return this.httpRequest.request({
       method: 'POST',
       url: '/v1/asset/transfer',
-      headers: {
-        'x-api-key': xApiKey,
-      },
       body: requestBody,
       mediaType: 'application/json',
     });

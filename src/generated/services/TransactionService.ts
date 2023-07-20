@@ -17,21 +17,16 @@ export class TransactionService {
 
   /**
    * Creating a new transaction
-   * @param xApiKey Beam API key
    * @param requestBody
    * @returns CreateTransactionResponse
    * @throws ApiError
    */
-  public whatever(
-    xApiKey: string,
+  public createTransaction(
     requestBody: CreateTransactionRequestInput,
   ): CancelablePromise<CreateTransactionResponse> {
     return this.httpRequest.request({
       method: 'POST',
       url: '/v1/transaction',
-      headers: {
-        'x-api-key': xApiKey,
-      },
       body: requestBody,
       mediaType: 'application/json',
     });
@@ -39,21 +34,16 @@ export class TransactionService {
 
   /**
    * Confirming a transaction
-   * @param xApiKey Beam API key
    * @param requestBody
    * @returns ConfirmTransactionResponse
    * @throws ApiError
    */
   public confirmTransaction(
-    xApiKey: string,
     requestBody: ConfirmTransactionRequestInput,
   ): CancelablePromise<ConfirmTransactionResponse> {
     return this.httpRequest.request({
       method: 'POST',
       url: '/v1/transaction/signature',
-      headers: {
-        'x-api-key': xApiKey,
-      },
       body: requestBody,
       mediaType: 'application/json',
     });
@@ -61,13 +51,11 @@ export class TransactionService {
 
   /**
    * Getting a transaction
-   * @param xApiKey Beam API key
    * @param id
    * @returns GetTransactionResponse
    * @throws ApiError
    */
   public getTransaction(
-    xApiKey: string,
     id: string,
   ): CancelablePromise<GetTransactionResponse> {
     return this.httpRequest.request({
@@ -75,9 +63,6 @@ export class TransactionService {
       url: '/v1/transaction/{id}',
       path: {
         'id': id,
-      },
-      headers: {
-        'x-api-key': xApiKey,
       },
     });
   }

@@ -16,21 +16,16 @@ export class AccountService {
 
   /**
    * Creating an account
-   * @param xApiKey Beam API key
    * @param requestBody
    * @returns CreateAccountResponse
    * @throws ApiError
    */
   public account(
-    xApiKey: string,
     requestBody: CreateAccountRequestInput,
   ): CancelablePromise<CreateAccountResponse> {
     return this.httpRequest.request({
       method: 'POST',
       url: '/v1/account',
-      headers: {
-        'x-api-key': xApiKey,
-      },
       body: requestBody,
       mediaType: 'application/json',
     });
@@ -38,14 +33,12 @@ export class AccountService {
 
   /**
    * Taking ownership of an account
-   * @param xApiKey Beam API key
    * @param accountId
    * @param requestBody
    * @returns TakeOwnershipResponse
    * @throws ApiError
    */
   public takeOwnership(
-    xApiKey: string,
     accountId: any,
     requestBody: TakeOwnershipRequestInput,
   ): CancelablePromise<TakeOwnershipResponse> {
@@ -54,9 +47,6 @@ export class AccountService {
       url: '/v1/account/{accountId}/take-ownership',
       path: {
         'accountId': accountId,
-      },
-      headers: {
-        'x-api-key': xApiKey,
       },
       body: requestBody,
       mediaType: 'application/json',
