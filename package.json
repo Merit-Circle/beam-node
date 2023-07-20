@@ -1,12 +1,11 @@
 {
-  "name": "beam-node",
-  "version": "1.0.0",
+  "name": "@onbeam/node",
+  "version": "0.1.0-alpha",
   "type": "module",
   "main": "dist/index.js",
   "description": "",
-  "files": [
-    "dist"
-  ],
+  "private": false,
+  "files": ["dist", "./README.md"],
   "scripts": {
     "generate": "ts-node --esm openapi.config.ts",
     "build": "tsup --config ./tsup.config.ts",
