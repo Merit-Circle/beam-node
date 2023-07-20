@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export { Beam as default } from './Beam';
+export { Beam as default, Beam } from './Beam';
 
 export { AddContractRequestInput } from './generated/models/AddContractRequestInput';
 export { AddContractResponse } from './generated/models/AddContractResponse';
