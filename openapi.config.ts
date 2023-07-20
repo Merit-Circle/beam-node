@@ -1,7 +1,7 @@
 import * as OpenAPI from 'openapi-typescript-codegen';
 
 OpenAPI.generate({
-  input: '',
+  input: 'http://localhost:4001/api/game-json',
   output: './src/generated',
   clientName: 'ApiClient',
   httpClient: 'node',

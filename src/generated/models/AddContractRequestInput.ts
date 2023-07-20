@@ -6,18 +6,14 @@
 export type AddContractRequestInput = {
   address: string;
   type: AddContractRequestInput.type;
-  abi: Array<any>;
+  abi: any[];
   name: string;
 };
 
 export namespace AddContractRequestInput {
-
   export enum type {
     ERC20 = 'ERC20',
     ERC721 = 'ERC721',
     ERC1155 = 'ERC1155',
   }
-
-
 }
-

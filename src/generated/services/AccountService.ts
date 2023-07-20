@@ -7,11 +7,10 @@ import type { CreateAccountResponse } from '../models/CreateAccountResponse';
 import type { TakeOwnershipRequestInput } from '../models/TakeOwnershipRequestInput';
 import type { TakeOwnershipResponse } from '../models/TakeOwnershipResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class AccountService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -46,11 +45,10 @@ export class AccountService {
       method: 'POST',
       url: '/v1/account/{accountId}/take-ownership',
       path: {
-        'accountId': accountId,
+        accountId: accountId,
       },
       body: requestBody,
       mediaType: 'application/json',
     });
   }
-
 }

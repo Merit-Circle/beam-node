@@ -6,4 +6,3 @@
 export type GenerateLinkCodeResponse = {
   code: string;
 };
-

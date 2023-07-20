@@ -8,4 +8,3 @@ export type TakeOwnershipRequestInput = {
   newOwnerAddress: string;
   newOwnerChainId: number;
 };
-

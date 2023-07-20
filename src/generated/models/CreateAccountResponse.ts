@@ -39,7 +39,7 @@ export type CreateAccountResponse = {
         removed: boolean;
         address: string;
         data: string;
-        topics: Array<string>;
+        topics: string[];
         transactionHash: string;
         logIndex: number;
       }>;
@@ -57,7 +57,7 @@ export type CreateAccountResponse = {
         tokenContract?: string;
         tokenContractAmount?: string;
       };
-      transactionIntents?: Array<any>;
+      transactionIntents?: any[];
       policyRules?: Array<{
         id: string;
         object: string;
@@ -94,7 +94,7 @@ export type CreateAccountResponse = {
       email: string | null;
       description: string | null;
       metadata: string;
-      transactionIntents?: Array<any>;
+      transactionIntents?: any[];
       accounts?: Array<{
         id: string;
         object: string;
@@ -103,7 +103,7 @@ export type CreateAccountResponse = {
         deployed: boolean;
         custodial: boolean;
         chainId: number;
-        transactionIntents: Array<any>;
+        transactionIntents: any[];
       }>;
     };
     account?: any;
@@ -111,8 +111,7 @@ export type CreateAccountResponse = {
       contract?: string;
       value?: string;
       functionName: string;
-      functionArgs: Array<any>;
+      functionArgs: any[];
     }>;
   }>;
 };
-

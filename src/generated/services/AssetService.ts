@@ -5,11 +5,10 @@
 import type { TransferAssetRequestInput } from '../models/TransferAssetRequestInput';
 import type { TransferAssetResponse } from '../models/TransferAssetResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class AssetService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -28,5 +27,4 @@ export class AssetService {
       mediaType: 'application/json',
     });
   }
-
 }

@@ -9,11 +9,6 @@ import type { OpenAPIConfig } from './OpenAPI';
 import { request as __request } from './request';
 
 export class NodeHttpRequest extends BaseHttpRequest {
-
-  constructor(config: OpenAPIConfig) {
-    super(config);
-  }
-
   /**
    * Request method
    * @param options The request options from the service

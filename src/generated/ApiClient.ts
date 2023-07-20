@@ -3,8 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { OpenAPIConfig } from './core/OpenAPI';
 import { NodeHttpRequest } from './core/NodeHttpRequest';
+import type { OpenAPIConfig } from './core/OpenAPI';
 
 import { AccountService } from './services/AccountService';
 import { AssetService } from './services/AssetService';
@@ -12,10 +12,9 @@ import { GameService } from './services/GameService';
 import { PlayerService } from './services/PlayerService';
 import { TransactionService } from './services/TransactionService';
 
-type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
+type HttpRequestConstructor = new (_config: OpenAPIConfig) => BaseHttpRequest;
 
 export class ApiClient {
-
   public readonly account: AccountService;
   public readonly asset: AssetService;
   public readonly game: GameService;
@@ -24,7 +23,10 @@ export class ApiClient {
 
   public readonly request: BaseHttpRequest;
 
-  constructor(config?: Partial<OpenAPIConfig>, HttpRequest: HttpRequestConstructor = NodeHttpRequest) {
+  constructor(
+    config?: Partial<OpenAPIConfig>,
+    HttpRequest: HttpRequestConstructor = NodeHttpRequest,
+  ) {
     this.request = new HttpRequest({
       BASE: config?.BASE ?? '',
       VERSION: config?.VERSION ?? '1.0.0',
@@ -44,4 +46,3 @@ export class ApiClient {
     this.transaction = new TransactionService(this.request);
   }
 }
-

@@ -9,11 +9,10 @@ export type CreateTransactionRequestInput = {
   interactions: Array<{
     contract: string;
     functionName: string;
-    functionArgs: Array<string>;
+    functionArgs: string[];
   }>;
   optimistic: boolean;
   policyId?: string;
   discriminator?: string;
   attributeTypes: string;
 };
-

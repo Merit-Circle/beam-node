@@ -6,11 +6,10 @@ import type { CreatePlayerRequestInput } from '../models/CreatePlayerRequestInpu
 import type { CreatePlayerResponse } from '../models/CreatePlayerResponse';
 import type { GetAllPlayersResponse } from '../models/GetAllPlayersResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class PlayerService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -41,5 +40,4 @@ export class PlayerService {
       url: '/v1/player',
     });
   }
-
 }

@@ -11,4 +11,3 @@ export type TransferAssetRequestInput = {
   tokenId: number;
   chainId: number;
 };
-

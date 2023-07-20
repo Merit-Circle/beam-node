@@ -31,7 +31,7 @@ export type CreateTransactionResponse = {
       removed: boolean;
       address: string;
       data: string;
-      topics: Array<string>;
+      topics: string[];
       transactionHash: string;
       logIndex: number;
     }>;
@@ -77,7 +77,7 @@ export type CreateTransactionResponse = {
           removed: boolean;
           address: string;
           data: string;
-          topics: Array<string>;
+          topics: string[];
           transactionHash: string;
           logIndex: number;
         }>;
@@ -93,7 +93,7 @@ export type CreateTransactionResponse = {
         email: string | null;
         description: string | null;
         metadata: string;
-        transactionIntents?: Array<any>;
+        transactionIntents?: any[];
         accounts?: Array<{
           id: string;
           object: string;
@@ -102,7 +102,7 @@ export type CreateTransactionResponse = {
           deployed: boolean;
           custodial: boolean;
           chainId: number;
-          transactionIntents: Array<any>;
+          transactionIntents: any[];
         }>;
       };
       account?: any;
@@ -110,7 +110,7 @@ export type CreateTransactionResponse = {
         contract?: string;
         value?: string;
         functionName: string;
-        functionArgs: Array<any>;
+        functionArgs: any[];
       }>;
     }>;
     policyRules?: Array<{
@@ -147,22 +147,18 @@ export type CreateTransactionResponse = {
     contract?: string;
     value?: string;
     functionName: string;
-    functionArgs: Array<any>;
+    functionArgs: any[];
   }>;
 };
 
 export namespace CreateTransactionResponse {
-
   export enum type {
     SIGN_WITH_WALLET = 'SignWithWallet',
-    '_0' = 0,
+    _0 = 0,
   }
 
   export enum sponsorSchema {
     PAY_FOR_USER = 'pay_for_user',
     CHARGE_CUSTOM_TOKENS = 'charge_custom_tokens',
   }
-
-
 }
-

@@ -8,4 +8,3 @@ export type CreateGameResponse = {
   name: string;
   apiKey: string;
 };
-
