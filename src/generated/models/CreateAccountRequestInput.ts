@@ -7,3 +7,4 @@ export type CreateAccountRequestInput = {
   chainId: number;
   playerId: string;
 };
+

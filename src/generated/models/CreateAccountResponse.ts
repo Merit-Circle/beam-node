@@ -8,10 +8,90 @@ export type CreateAccountResponse = {
   object: string;
   createdAt: number;
   address: string;
+  ownerAddress: string;
   deployed: boolean;
   custodial: boolean;
   chainId: number;
+  accountType: string;
   transactionIntents: Array<{
+    nextAction?: {
+      type: 'sign_with_wallet';
+      payload: {
+        userOp?: any;
+        userOpHash?: string;
+      };
+    };
+    policy?: {
+      id: string;
+      object: string;
+      createdAt: number;
+      name: string | null;
+      deleted: boolean;
+      chainId: number;
+      strategy: {
+        sponsorSchema: 'pay_for_user' | 'charge_custom_tokens';
+        tokenContract?: string;
+        tokenContractAmount?: string;
+      };
+      transactionIntents?: Array<any>;
+      policyRules?: Array<{
+        id: string;
+        object: string;
+        createdAt: number;
+        type: 'contract_functions' | 'account_functions';
+        functionName?: string;
+        contract?: {
+          id: string;
+          object: string;
+          createdAt: number;
+          name: string | null;
+          chainId: number;
+          address: string;
+          deleted: boolean;
+          abi: Array<{
+            name?: string;
+            type?: string;
+            anonymous?: boolean;
+            payable?: boolean;
+            constant?: boolean;
+            stateMutability?: string;
+            gas?: string;
+            inputs?: Array<{
+              name?: string;
+              type?: string;
+              indexed?: boolean;
+              internalType?: any;
+              components?: Array<any>;
+            }>;
+            outputs?: Array<any>;
+          }>;
+          publicVerification: boolean;
+        };
+      }>;
+    };
+    player?: {
+      id: string;
+      object: string;
+      createdAt: number;
+      name: string | null;
+      email: string | null;
+      description: string | null;
+      metadata: string;
+      transactionIntents?: Array<any>;
+      accounts?: Array<{
+        id: string;
+        object: string;
+        createdAt: number;
+        address: string;
+        ownerAddress: string;
+        deployed: boolean;
+        custodial: boolean;
+        chainId: number;
+        accountType: string;
+        transactionIntents: Array<any>;
+      }>;
+    };
+    account?: any;
     id: string;
     object: string;
     createdAt: number;
@@ -19,13 +99,6 @@ export type CreateAccountResponse = {
     chainId: number;
     userOperationHash?: string;
     userOperation?: any;
-    nextAction?: {
-      type: 'SignWithWallet' | 0;
-      payload: {
-        userOp?: any;
-        userOpHash?: string;
-      };
-    };
     response?: {
       createdAt: number;
       blockNumber?: number;
@@ -39,79 +112,19 @@ export type CreateAccountResponse = {
         removed: boolean;
         address: string;
         data: string;
-        topics: string[];
+        topics: Array<string>;
         transactionHash: string;
         logIndex: number;
       }>;
       to?: string;
       error?: any;
     };
-    policy?: {
-      id: string;
-      object: string;
-      createdAt: number;
-      name: string | null;
-      chainId: number;
-      strategy: {
-        sponsorSchema: 'pay_for_user' | 'charge_custom_tokens';
-        tokenContract?: string;
-        tokenContractAmount?: string;
-      };
-      transactionIntents?: any[];
-      policyRules?: Array<{
-        id: string;
-        object: string;
-        createdAt: number;
-        type: 'contract_functions' | 'account_functions';
-        functionName: string | null;
-        contract: {
-          id: string;
-          object: string;
-          createdAt: number;
-          name: string | null;
-          chainId: number;
-          address: string;
-          abi: Array<{
-            name?: string;
-            type?: string;
-            anonymous?: boolean;
-            payable?: boolean;
-            constant?: boolean;
-            stateMutability?: string;
-            inputs?: any;
-            outputs?: any;
-            gas?: string;
-          }>;
-          publicVerification: boolean;
-        } | null;
-      }>;
-    };
-    player?: {
-      id: string;
-      object: string;
-      createdAt: number;
-      name: string | null;
-      email: string | null;
-      description: string | null;
-      metadata: string;
-      transactionIntents?: any[];
-      accounts?: Array<{
-        id: string;
-        object: string;
-        createdAt: number;
-        address: string;
-        deployed: boolean;
-        custodial: boolean;
-        chainId: number;
-        transactionIntents: any[];
-      }>;
-    };
-    account?: any;
     interactions?: Array<{
       contract?: string;
       value?: string;
       functionName: string;
-      functionArgs: any[];
+      functionArgs: Array<any>;
     }>;
   }>;
 };
+

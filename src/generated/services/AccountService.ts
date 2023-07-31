@@ -4,13 +4,14 @@
 /* eslint-disable */
 import type { CreateAccountRequestInput } from '../models/CreateAccountRequestInput';
 import type { CreateAccountResponse } from '../models/CreateAccountResponse';
-import type { TakeOwnershipRequestInput } from '../models/TakeOwnershipRequestInput';
-import type { TakeOwnershipResponse } from '../models/TakeOwnershipResponse';
+import type { TransferOwnershipRequestInput } from '../models/TransferOwnershipRequestInput';
+import type { TransferOwnershipResponse } from '../models/TransferOwnershipResponse';
 
-import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class AccountService {
+
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -34,21 +35,22 @@ export class AccountService {
    * Taking ownership of an account
    * @param accountId
    * @param requestBody
-   * @returns TakeOwnershipResponse
+   * @returns TransferOwnershipResponse
    * @throws ApiError
    */
-  public takeOwnership(
+  public transferOwnership(
     accountId: any,
-    requestBody: TakeOwnershipRequestInput,
-  ): CancelablePromise<TakeOwnershipResponse> {
+    requestBody: TransferOwnershipRequestInput,
+  ): CancelablePromise<TransferOwnershipResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/account/{accountId}/take-ownership',
+      url: '/v1/account/{accountId}/transfer-ownership',
       path: {
-        accountId: accountId,
+        'accountId': accountId,
       },
       body: requestBody,
       mediaType: 'application/json',
     });
   }
+
 }

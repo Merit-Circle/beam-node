@@ -6,3 +6,4 @@
 export type ConfirmTransactionResponse = {
   id: string;
 };
+

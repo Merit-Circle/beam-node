@@ -7,3 +7,4 @@ export type GenerateLinkCodeRequestInput = {
   callbackUrl: string;
   playerId?: string;
 };
+

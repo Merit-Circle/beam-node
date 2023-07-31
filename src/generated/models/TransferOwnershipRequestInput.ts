@@ -3,6 +3,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreateGameRequestInput = {
-  name: string;
+export type TransferOwnershipRequestInput = {
+  policyId: string;
+  newOwnerAddress: string;
+  newOwnerChainId: number;
 };
+

@@ -6,10 +6,11 @@ import type { CreatePlayerRequestInput } from '../models/CreatePlayerRequestInpu
 import type { CreatePlayerResponse } from '../models/CreatePlayerResponse';
 import type { GetAllPlayersResponse } from '../models/GetAllPlayersResponse';
 
-import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class PlayerService {
+
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -31,13 +32,23 @@ export class PlayerService {
 
   /**
    * Getting all players
-   * @returns GetAllPlayersResponse test
+   * @param limit
+   * @param offset
+   * @returns GetAllPlayersResponse
    * @throws ApiError
    */
-  public getAllPlayers(): CancelablePromise<GetAllPlayersResponse> {
+  public getAllPlayers(
+    limit: number,
+    offset: number,
+  ): CancelablePromise<GetAllPlayersResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/player',
+      url: '/v1/player/{limit}/{offset}',
+      path: {
+        'limit': limit,
+        'offset': offset,
+      },
     });
   }
+
 }

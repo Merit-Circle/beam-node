@@ -8,3 +8,4 @@ export type CreatePlayerResponse = {
   identifier: string;
   clerkId: string | null;
 };
+

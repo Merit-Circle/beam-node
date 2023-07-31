@@ -4,13 +4,6 @@
 /* eslint-disable */
 
 export type GetTransactionResponse = {
-  id: string;
-  object: string;
-  createdAt: number;
-  updatedAt: number;
-  chainId: number;
-  userOperationHash?: string;
-  userOperation?: any;
   nextAction?: {
     type: GetTransactionResponse.type;
     payload: {
@@ -18,31 +11,12 @@ export type GetTransactionResponse = {
       userOpHash?: string;
     };
   };
-  response?: {
-    createdAt: number;
-    blockNumber?: number;
-    transactionHash?: string;
-    gasUsed?: number;
-    status?: number;
-    logs?: Array<{
-      blockNumber: number;
-      blockHash: string;
-      transactionIndex: number;
-      removed: boolean;
-      address: string;
-      data: string;
-      topics: string[];
-      transactionHash: string;
-      logIndex: number;
-    }>;
-    to?: string;
-    error?: any;
-  };
   policy?: {
     id: string;
     object: string;
     createdAt: number;
     name: string | null;
+    deleted: boolean;
     chainId: number;
     strategy: {
       sponsorSchema: GetTransactionResponse.sponsorSchema;
@@ -50,6 +24,37 @@ export type GetTransactionResponse = {
       tokenContractAmount?: string;
     };
     transactionIntents?: Array<{
+      nextAction?: {
+        type: 'sign_with_wallet';
+        payload: {
+          userOp?: any;
+          userOpHash?: string;
+        };
+      };
+      policy?: any;
+      player?: {
+        id: string;
+        object: string;
+        createdAt: number;
+        name: string | null;
+        email: string | null;
+        description: string | null;
+        metadata: string;
+        transactionIntents?: Array<any>;
+        accounts?: Array<{
+          id: string;
+          object: string;
+          createdAt: number;
+          address: string;
+          ownerAddress: string;
+          deployed: boolean;
+          custodial: boolean;
+          chainId: number;
+          accountType: string;
+          transactionIntents: Array<any>;
+        }>;
+      };
+      account?: any;
       id: string;
       object: string;
       createdAt: number;
@@ -57,13 +62,6 @@ export type GetTransactionResponse = {
       chainId: number;
       userOperationHash?: string;
       userOperation?: any;
-      nextAction?: {
-        type: 'SignWithWallet' | 0;
-        payload: {
-          userOp?: any;
-          userOpHash?: string;
-        };
-      };
       response?: {
         createdAt: number;
         blockNumber?: number;
@@ -77,40 +75,18 @@ export type GetTransactionResponse = {
           removed: boolean;
           address: string;
           data: string;
-          topics: string[];
+          topics: Array<string>;
           transactionHash: string;
           logIndex: number;
         }>;
         to?: string;
         error?: any;
       };
-      policy?: any;
-      player?: {
-        id: string;
-        object: string;
-        createdAt: number;
-        name: string | null;
-        email: string | null;
-        description: string | null;
-        metadata: string;
-        transactionIntents?: any[];
-        accounts?: Array<{
-          id: string;
-          object: string;
-          createdAt: number;
-          address: string;
-          deployed: boolean;
-          custodial: boolean;
-          chainId: number;
-          transactionIntents: any[];
-        }>;
-      };
-      account?: any;
       interactions?: Array<{
         contract?: string;
         value?: string;
         functionName: string;
-        functionArgs: any[];
+        functionArgs: Array<any>;
       }>;
     }>;
     policyRules?: Array<{
@@ -118,14 +94,15 @@ export type GetTransactionResponse = {
       object: string;
       createdAt: number;
       type: 'contract_functions' | 'account_functions';
-      functionName: string | null;
-      contract: {
+      functionName?: string;
+      contract?: {
         id: string;
         object: string;
         createdAt: number;
         name: string | null;
         chainId: number;
         address: string;
+        deleted: boolean;
         abi: Array<{
           name?: string;
           type?: string;
@@ -133,32 +110,68 @@ export type GetTransactionResponse = {
           payable?: boolean;
           constant?: boolean;
           stateMutability?: string;
-          inputs?: any;
-          outputs?: any;
           gas?: string;
+          inputs?: Array<{
+            name?: string;
+            type?: string;
+            indexed?: boolean;
+            internalType?: any;
+            components?: Array<any>;
+          }>;
+          outputs?: Array<any>;
         }>;
         publicVerification: boolean;
-      } | null;
+      };
     }>;
   };
   player?: any;
   account?: any;
+  id: string;
+  object: string;
+  createdAt: number;
+  updatedAt: number;
+  chainId: number;
+  userOperationHash?: string;
+  userOperation?: any;
+  response?: {
+    createdAt: number;
+    blockNumber?: number;
+    transactionHash?: string;
+    gasUsed?: number;
+    status?: number;
+    logs?: Array<{
+      blockNumber: number;
+      blockHash: string;
+      transactionIndex: number;
+      removed: boolean;
+      address: string;
+      data: string;
+      topics: Array<string>;
+      transactionHash: string;
+      logIndex: number;
+    }>;
+    to?: string;
+    error?: any;
+  };
   interactions?: Array<{
     contract?: string;
     value?: string;
     functionName: string;
-    functionArgs: any[];
+    functionArgs: Array<any>;
   }>;
 };
 
 export namespace GetTransactionResponse {
+
   export enum type {
-    SIGN_WITH_WALLET = 'SignWithWallet',
-    _0 = 0,
+    SIGN_WITH_WALLET = 'sign_with_wallet',
   }
 
   export enum sponsorSchema {
     PAY_FOR_USER = 'pay_for_user',
     CHARGE_CUSTOM_TOKENS = 'charge_custom_tokens',
   }
+
+
 }
+

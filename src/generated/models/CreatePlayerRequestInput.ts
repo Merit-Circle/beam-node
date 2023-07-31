@@ -6,3 +6,4 @@
 export type CreatePlayerRequestInput = {
   identifier: string;
 };
+

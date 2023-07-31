@@ -1,6 +1,5 @@
 import {
   AccountService,
-  AssetService,
   GameService,
   PlayerService,
   TransactionService,
@@ -24,10 +23,6 @@ export class Beam {
 
   public get accounts(): AccountService {
     return this.client.account;
-  }
-
-  public get assets(): AssetService {
-    return this.client.asset;
   }
 
   public get games(): GameService {
