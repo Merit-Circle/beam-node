@@ -47,11 +47,12 @@ export type CreateTransactionResponse = {
           object: string;
           createdAt: number;
           address: string;
-          ownerAddress: string;
+          ownerAddress?: string;
           deployed: boolean;
           custodial: boolean;
           chainId: number;
           accountType: string;
+          pendingOwnerAddress?: string;
         }>;
       };
       account?: any;

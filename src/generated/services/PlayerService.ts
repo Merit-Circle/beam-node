@@ -5,6 +5,7 @@
 import type { CreatePlayerRequestInput } from '../models/CreatePlayerRequestInput';
 import type { CreatePlayerResponse } from '../models/CreatePlayerResponse';
 import type { GetAllPlayersResponse } from '../models/GetAllPlayersResponse';
+import type { GetPlayerResponse } from '../models/GetPlayerResponse';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
@@ -47,6 +48,24 @@ export class PlayerService {
       query: {
         'offset': offset,
         'limit': limit,
+      },
+    });
+  }
+
+  /**
+   * Getting information about authenticated player
+   * @param playerId
+   * @returns GetPlayerResponse Return the player information
+   * @throws ApiError
+   */
+  public getPlayer(
+    playerId: string,
+  ): CancelablePromise<GetPlayerResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/player/{playerId}',
+      path: {
+        'playerId': playerId,
       },
     });
   }

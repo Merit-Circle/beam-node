@@ -7,7 +7,13 @@ export type GetAllPlayersResponse = {
   data: Array<{
     id: string;
     identifier: string;
-    clerkId: string | null;
+    wallets: Array<{
+      id: string;
+      playerId: string;
+      address: string;
+      chainId: number;
+      custodial: boolean;
+    }>;
   }>;
   pagination: {
     count: number;

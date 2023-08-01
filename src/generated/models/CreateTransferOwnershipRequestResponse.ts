@@ -3,17 +3,18 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type TransferOwnershipResponse = {
-  type: TransferOwnershipResponse.type;
+export type CreateTransferOwnershipRequestResponse = {
+  type: CreateTransferOwnershipRequestResponse.type;
   id: string;
   createdAt: any;
-  message: string;
+  message: string | null;
   chainId: number;
-  address: string;
+  accountAddress: string;
+  signerAddress: string;
   url: string;
 };
 
-export namespace TransferOwnershipResponse {
+export namespace CreateTransferOwnershipRequestResponse {
 
   export enum type {
     TRANSFER_OWNERSHIP = 'TransferOwnership',

@@ -3,9 +3,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type TransferOwnershipRequestInput = {
-  policyId: string;
-  newOwnerAddress: string;
-  newOwnerChainId: number;
+export type GetAccountResponse = {
+  id: string;
+  playerId: string;
+  address: string;
+  chainId: number;
+  custodial: boolean;
 };
 

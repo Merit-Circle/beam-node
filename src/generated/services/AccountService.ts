@@ -4,8 +4,10 @@
 /* eslint-disable */
 import type { CreateAccountRequestInput } from '../models/CreateAccountRequestInput';
 import type { CreateAccountResponse } from '../models/CreateAccountResponse';
-import type { TransferOwnershipRequestInput } from '../models/TransferOwnershipRequestInput';
-import type { TransferOwnershipResponse } from '../models/TransferOwnershipResponse';
+import type { CreateTransferOwnershipRequestInput } from '../models/CreateTransferOwnershipRequestInput';
+import type { CreateTransferOwnershipRequestResponse } from '../models/CreateTransferOwnershipRequestResponse';
+import type { GetAccountResponse } from '../models/GetAccountResponse';
+import type { GetAllAccountsResponse } from '../models/GetAllAccountsResponse';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
@@ -32,19 +34,49 @@ export class AccountService {
   }
 
   /**
-   * Taking ownership of an account
-   * @param accountId
-   * @param requestBody
-   * @returns TransferOwnershipResponse
+   * Getting all accounts
+   * @returns GetAllAccountsResponse
    * @throws ApiError
    */
-  public transferOwnership(
+  public account1(): CancelablePromise<GetAllAccountsResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/account',
+    });
+  }
+
+  /**
+   * Getting information about authenticated player
+   * @param accountId
+   * @returns GetAccountResponse
+   * @throws ApiError
+   */
+  public getAccount(
+    accountId: string,
+  ): CancelablePromise<GetAccountResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/account/{accountId}',
+      path: {
+        'accountId': accountId,
+      },
+    });
+  }
+
+  /**
+   * Creates a transfer request to transfer custodial wallet ownership to an external wallet
+   * @param accountId
+   * @param requestBody
+   * @returns CreateTransferOwnershipRequestResponse
+   * @throws ApiError
+   */
+  public createTransferRequest(
     accountId: any,
-    requestBody: TransferOwnershipRequestInput,
-  ): CancelablePromise<TransferOwnershipResponse> {
+    requestBody: CreateTransferOwnershipRequestInput,
+  ): CancelablePromise<CreateTransferOwnershipRequestResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/account/{accountId}/transfer-ownership',
+      url: '/v1/account/{accountId}/create-transfer-request',
       path: {
         'accountId': accountId,
       },

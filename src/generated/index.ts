@@ -18,13 +18,17 @@ export type { CreatePlayerRequestInput } from './models/CreatePlayerRequestInput
 export type { CreatePlayerResponse } from './models/CreatePlayerResponse';
 export type { CreateTransactionRequestInput } from './models/CreateTransactionRequestInput';
 export { CreateTransactionResponse } from './models/CreateTransactionResponse';
+export type { CreateTransferOwnershipRequestInput } from './models/CreateTransferOwnershipRequestInput';
+export { CreateTransferOwnershipRequestResponse } from './models/CreateTransferOwnershipRequestResponse';
 export type { GenerateLinkCodeRequestInput } from './models/GenerateLinkCodeRequestInput';
 export type { GenerateLinkCodeResponse } from './models/GenerateLinkCodeResponse';
+export type { GetAccountResponse } from './models/GetAccountResponse';
+export type { GetAllAccountsResponse } from './models/GetAllAccountsResponse';
 export type { GetAllPlayersResponse } from './models/GetAllPlayersResponse';
+export type { GetGameResponse } from './models/GetGameResponse';
 export type { GetPlayerAssetsResponse } from './models/GetPlayerAssetsResponse';
+export type { GetPlayerResponse } from './models/GetPlayerResponse';
 export { GetTransactionResponse } from './models/GetTransactionResponse';
-export type { TransferOwnershipRequestInput } from './models/TransferOwnershipRequestInput';
-export { TransferOwnershipResponse } from './models/TransferOwnershipResponse';
 
 export { AccountService } from './services/AccountService';
 export { AssetService } from './services/AssetService';

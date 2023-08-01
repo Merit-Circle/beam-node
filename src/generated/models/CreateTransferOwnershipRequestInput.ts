@@ -3,11 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreateAccountResponse = {
-  id: string;
-  playerId: string;
-  address: string;
-  chainId: number;
-  custodial: boolean;
+export type CreateTransferOwnershipRequestInput = {
+  policyId: string;
+  newOwnerAddress: string;
 };
 

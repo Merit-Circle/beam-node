@@ -4,6 +4,7 @@
 /* eslint-disable */
 import type { GenerateLinkCodeRequestInput } from '../models/GenerateLinkCodeRequestInput';
 import type { GenerateLinkCodeResponse } from '../models/GenerateLinkCodeResponse';
+import type { GetGameResponse } from '../models/GetGameResponse';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
@@ -11,6 +12,18 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class GameService {
 
   constructor(public readonly httpRequest: BaseHttpRequest) {}
+
+  /**
+   * Get information about your game
+   * @returns GetGameResponse Game response (including contracts & policies)
+   * @throws ApiError
+   */
+  public getGame(): CancelablePromise<GetGameResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/game',
+    });
+  }
 
   /**
    * Generate QR code for linking player to the game

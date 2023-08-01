@@ -3,14 +3,13 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type GetPlayerAssetsResponse = {
+export type GetAllAccountsResponse = {
   data: Array<{
     id: string;
-    name: string;
-    imageUrl: string | null;
-    assetType: string;
-    assetAddress: string;
-    quantity: number;
+    playerId: string;
+    address: string;
+    chainId: number;
+    custodial: boolean;
   }>;
   pagination: {
     count: number;
