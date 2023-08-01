@@ -32,21 +32,21 @@ export class PlayerService {
 
   /**
    * Getting all players
-   * @param limit
    * @param offset
+   * @param limit
    * @returns GetAllPlayersResponse
    * @throws ApiError
    */
   public getAllPlayers(
-    limit: number,
     offset: number,
+    limit: number,
   ): CancelablePromise<GetAllPlayersResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/player/{limit}/{offset}',
-      path: {
-        'limit': limit,
+      url: '/v1/player',
+      query: {
         'offset': offset,
+        'limit': limit,
       },
     });
   }

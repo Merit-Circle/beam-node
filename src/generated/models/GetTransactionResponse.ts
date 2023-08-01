@@ -42,6 +42,7 @@ export type GetTransactionResponse = {
         metadata: string;
         transactionIntents?: Array<any>;
         accounts?: Array<{
+          transactionIntents?: Array<any>;
           id: string;
           object: string;
           createdAt: number;
@@ -51,7 +52,6 @@ export type GetTransactionResponse = {
           custodial: boolean;
           chainId: number;
           accountType: string;
-          transactionIntents: Array<any>;
         }>;
       };
       account?: any;

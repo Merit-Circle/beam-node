@@ -9,7 +9,7 @@ export type CreateTransactionRequestInput = {
   interactions: Array<{
     contract: string;
     functionName: string;
-    functionArgs: Array<string>;
+    functionArgs: Array<any>;
   }>;
   optimistic: boolean;
   policyId?: string;

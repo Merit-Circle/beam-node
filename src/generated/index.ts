@@ -21,11 +21,13 @@ export { CreateTransactionResponse } from './models/CreateTransactionResponse';
 export type { GenerateLinkCodeRequestInput } from './models/GenerateLinkCodeRequestInput';
 export type { GenerateLinkCodeResponse } from './models/GenerateLinkCodeResponse';
 export type { GetAllPlayersResponse } from './models/GetAllPlayersResponse';
+export type { GetPlayerAssetsResponse } from './models/GetPlayerAssetsResponse';
 export { GetTransactionResponse } from './models/GetTransactionResponse';
 export type { TransferOwnershipRequestInput } from './models/TransferOwnershipRequestInput';
 export { TransferOwnershipResponse } from './models/TransferOwnershipResponse';
 
 export { AccountService } from './services/AccountService';
+export { AssetService } from './services/AssetService';
 export { GameService } from './services/GameService';
 export { PlayerService } from './services/PlayerService';
 export { TransactionService } from './services/TransactionService';

@@ -4,16 +4,7 @@
 /* eslint-disable */
 
 export type CreateAccountResponse = {
-  id: string;
-  object: string;
-  createdAt: number;
-  address: string;
-  ownerAddress: string;
-  deployed: boolean;
-  custodial: boolean;
-  chainId: number;
-  accountType: string;
-  transactionIntents: Array<{
+  transactionIntents?: Array<{
     nextAction?: {
       type: 'sign_with_wallet';
       payload: {
@@ -79,6 +70,7 @@ export type CreateAccountResponse = {
       metadata: string;
       transactionIntents?: Array<any>;
       accounts?: Array<{
+        transactionIntents?: Array<any>;
         id: string;
         object: string;
         createdAt: number;
@@ -88,7 +80,6 @@ export type CreateAccountResponse = {
         custodial: boolean;
         chainId: number;
         accountType: string;
-        transactionIntents: Array<any>;
       }>;
     };
     account?: any;
@@ -126,5 +117,14 @@ export type CreateAccountResponse = {
       functionArgs: Array<any>;
     }>;
   }>;
+  id: string;
+  object: string;
+  createdAt: number;
+  address: string;
+  ownerAddress: string;
+  deployed: boolean;
+  custodial: boolean;
+  chainId: number;
+  accountType: string;
 };
 
