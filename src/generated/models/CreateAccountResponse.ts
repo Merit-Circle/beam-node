@@ -10,4 +10,3 @@ export type CreateAccountResponse = {
   chainId: number;
   custodial: boolean;
 };
-

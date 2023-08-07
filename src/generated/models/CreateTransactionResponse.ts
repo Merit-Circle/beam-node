@@ -40,9 +40,9 @@ export type CreateTransactionResponse = {
         email: string | null;
         description: string | null;
         metadata: string;
-        transactionIntents?: Array<any>;
+        transactionIntents?: any[];
         accounts?: Array<{
-          transactionIntents?: Array<any>;
+          transactionIntents?: any[];
           id: string;
           object: string;
           createdAt: number;
@@ -76,7 +76,7 @@ export type CreateTransactionResponse = {
           removed: boolean;
           address: string;
           data: string;
-          topics: Array<string>;
+          topics: string[];
           transactionHash: string;
           logIndex: number;
         }>;
@@ -87,7 +87,7 @@ export type CreateTransactionResponse = {
         contract?: string;
         value?: string;
         functionName: string;
-        functionArgs: Array<any>;
+        functionArgs: any[];
       }>;
     }>;
     policyRules?: Array<{
@@ -117,9 +117,9 @@ export type CreateTransactionResponse = {
             type?: string;
             indexed?: boolean;
             internalType?: any;
-            components?: Array<any>;
+            components?: any[];
           }>;
-          outputs?: Array<any>;
+          outputs?: any[];
         }>;
         publicVerification: boolean;
       };
@@ -147,7 +147,7 @@ export type CreateTransactionResponse = {
       removed: boolean;
       address: string;
       data: string;
-      topics: Array<string>;
+      topics: string[];
       transactionHash: string;
       logIndex: number;
     }>;
@@ -158,12 +158,11 @@ export type CreateTransactionResponse = {
     contract?: string;
     value?: string;
     functionName: string;
-    functionArgs: Array<any>;
+    functionArgs: any[];
   }>;
 };
 
 export namespace CreateTransactionResponse {
-
   export enum type {
     SIGN_WITH_WALLET = 'sign_with_wallet',
   }
@@ -172,7 +171,4 @@ export namespace CreateTransactionResponse {
     PAY_FOR_USER = 'pay_for_user',
     CHARGE_CUSTOM_TOKENS = 'charge_custom_tokens',
   }
-
-
 }
-

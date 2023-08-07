@@ -9,11 +9,10 @@ import type { CreateTransferOwnershipRequestResponse } from '../models/CreateTra
 import type { GetAccountResponse } from '../models/GetAccountResponse';
 import type { GetAllAccountsResponse } from '../models/GetAllAccountsResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class AccountService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -51,14 +50,12 @@ export class AccountService {
    * @returns GetAccountResponse
    * @throws ApiError
    */
-  public getAccount(
-    accountId: string,
-  ): CancelablePromise<GetAccountResponse> {
+  public getAccount(accountId: string): CancelablePromise<GetAccountResponse> {
     return this.httpRequest.request({
       method: 'GET',
       url: '/v1/account/{accountId}',
       path: {
-        'accountId': accountId,
+        accountId: accountId,
       },
     });
   }
@@ -78,11 +75,10 @@ export class AccountService {
       method: 'POST',
       url: '/v1/account/{accountId}/create-transfer-request',
       path: {
-        'accountId': accountId,
+        accountId: accountId,
       },
       body: requestBody,
       mediaType: 'application/json',
     });
   }
-
 }

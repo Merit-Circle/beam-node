@@ -14,4 +14,3 @@ export type GetPlayerResponse = {
     custodial: boolean;
   }>;
 };
-

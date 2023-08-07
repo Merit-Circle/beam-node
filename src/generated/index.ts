@@ -25,6 +25,7 @@ export type { GenerateLinkCodeResponse } from './models/GenerateLinkCodeResponse
 export type { GetAccountResponse } from './models/GetAccountResponse';
 export type { GetAllAccountsResponse } from './models/GetAllAccountsResponse';
 export type { GetAllPlayersResponse } from './models/GetAllPlayersResponse';
+export type { GetAssetListingsResponse } from './models/GetAssetListingsResponse';
 export type { GetGameResponse } from './models/GetGameResponse';
 export type { GetPlayerAssetsResponse } from './models/GetPlayerAssetsResponse';
 export type { GetPlayerResponse } from './models/GetPlayerResponse';

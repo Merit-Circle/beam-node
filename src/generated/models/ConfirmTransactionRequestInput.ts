@@ -7,4 +7,3 @@ export type ConfirmTransactionRequestInput = {
   transactionId: string;
   signature: string;
 };
-

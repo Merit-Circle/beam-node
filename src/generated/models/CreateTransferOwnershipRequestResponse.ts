@@ -15,7 +15,6 @@ export type CreateTransferOwnershipRequestResponse = {
 };
 
 export namespace CreateTransferOwnershipRequestResponse {
-
   export enum type {
     TRANSFER_OWNERSHIP = 'TransferOwnership',
     BUY_ORDER = 'BuyOrder',
@@ -24,7 +23,4 @@ export namespace CreateTransferOwnershipRequestResponse {
     CREATE_SESSION = 'CreateSession',
     REVOKE_SESSION = 'RevokeSession',
   }
-
-
 }
-

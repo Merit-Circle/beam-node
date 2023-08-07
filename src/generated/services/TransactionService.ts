@@ -8,11 +8,10 @@ import type { CreateTransactionRequestInput } from '../models/CreateTransactionR
 import type { CreateTransactionResponse } from '../models/CreateTransactionResponse';
 import type { GetTransactionResponse } from '../models/GetTransactionResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class TransactionService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -55,16 +54,13 @@ export class TransactionService {
    * @returns GetTransactionResponse
    * @throws ApiError
    */
-  public getTransaction(
-    id: string,
-  ): CancelablePromise<GetTransactionResponse> {
+  public getTransaction(id: string): CancelablePromise<GetTransactionResponse> {
     return this.httpRequest.request({
       method: 'GET',
       url: '/v1/transaction/{id}',
       path: {
-        'id': id,
+        id: id,
       },
     });
   }
-
 }

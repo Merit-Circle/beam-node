@@ -17,8 +17,7 @@ export type GetAllPlayersResponse = {
   }>;
   pagination: {
     count: number;
-    limit: number;
+    limit?: number;
     offset?: number;
   };
 };
-

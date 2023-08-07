@@ -7,11 +7,10 @@ import type { CreatePlayerResponse } from '../models/CreatePlayerResponse';
 import type { GetAllPlayersResponse } from '../models/GetAllPlayersResponse';
 import type { GetPlayerResponse } from '../models/GetPlayerResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class PlayerService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -33,21 +32,21 @@ export class PlayerService {
 
   /**
    * Getting all players
-   * @param offset
    * @param limit
+   * @param offset
    * @returns GetAllPlayersResponse
    * @throws ApiError
    */
   public getAllPlayers(
-    offset: number,
-    limit: number,
+    limit?: number,
+    offset?: number,
   ): CancelablePromise<GetAllPlayersResponse> {
     return this.httpRequest.request({
       method: 'GET',
       url: '/v1/player',
       query: {
-        'offset': offset,
-        'limit': limit,
+        limit: limit,
+        offset: offset,
       },
     });
   }
@@ -58,16 +57,13 @@ export class PlayerService {
    * @returns GetPlayerResponse Return the player information
    * @throws ApiError
    */
-  public getPlayer(
-    playerId: string,
-  ): CancelablePromise<GetPlayerResponse> {
+  public getPlayer(playerId: string): CancelablePromise<GetPlayerResponse> {
     return this.httpRequest.request({
       method: 'GET',
       url: '/v1/player/{playerId}',
       path: {
-        'playerId': playerId,
+        playerId: playerId,
       },
     });
   }
-
 }

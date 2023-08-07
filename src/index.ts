@@ -19,6 +19,7 @@ export type { GenerateLinkCodeResponse } from './generated/models/GenerateLinkCo
 export type { GetAccountResponse } from './generated/models/GetAccountResponse';
 export type { GetAllAccountsResponse } from './generated/models/GetAllAccountsResponse';
 export type { GetAllPlayersResponse } from './generated/models/GetAllPlayersResponse';
+export type { GetAssetListingsResponse } from './generated/models/GetAssetListingsResponse';
 export type { GetGameResponse } from './generated/models/GetGameResponse';
 export type { GetPlayerAssetsResponse } from './generated/models/GetPlayerAssetsResponse';
 export type { GetPlayerResponse } from './generated/models/GetPlayerResponse';

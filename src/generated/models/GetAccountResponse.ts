@@ -10,4 +10,3 @@ export type GetAccountResponse = {
   chainId: number;
   custodial: boolean;
 };
-

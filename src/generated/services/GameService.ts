@@ -6,11 +6,10 @@ import type { GenerateLinkCodeRequestInput } from '../models/GenerateLinkCodeReq
 import type { GenerateLinkCodeResponse } from '../models/GenerateLinkCodeResponse';
 import type { GetGameResponse } from '../models/GetGameResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class GameService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -41,5 +40,4 @@ export class GameService {
       mediaType: 'application/json',
     });
   }
-
 }

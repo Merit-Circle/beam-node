@@ -13,8 +13,7 @@ export type GetAllAccountsResponse = {
   }>;
   pagination: {
     count: number;
-    limit: number;
+    limit?: number;
     offset?: number;
   };
 };
-

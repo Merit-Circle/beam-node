@@ -7,4 +7,3 @@ export type CreateTransferOwnershipRequestInput = {
   policyId: string;
   newOwnerAddress: string;
 };
-

@@ -2,34 +2,56 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { GetAssetListingsResponse } from '../models/GetAssetListingsResponse';
 import type { GetPlayerAssetsResponse } from '../models/GetPlayerAssetsResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class AssetService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
-   * Get all players assets
-   * @param offset
+   * Get all the assets of a player.
+   * @param playerId
    * @param limit
+   * @param offset
    * @returns GetPlayerAssetsResponse
    * @throws ApiError
    */
-  public getAssets(
-    offset: number,
-    limit: number,
+  public getPlayerAssetsForGame(
+    playerId: string,
+    limit?: number,
+    offset?: number,
   ): CancelablePromise<GetPlayerAssetsResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/asset/player',
+      url: '/v1/asset/player/{playerId}',
+      path: {
+        playerId: playerId,
+      },
       query: {
-        'offset': offset,
-        'limit': limit,
+        limit: limit,
+        offset: offset,
       },
     });
   }
 
+  /**
+   * Get all the assets listed by a player
+   * @param playerId
+   * @returns GetAssetListingsResponse
+   * @throws ApiError
+   */
+  public getPlayerAssetListingsForGame(
+    playerId: string,
+  ): CancelablePromise<GetAssetListingsResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/asset/player/{playerId}/listings',
+      path: {
+        playerId: playerId,
+      },
+    });
+  }
 }
