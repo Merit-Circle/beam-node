@@ -13,7 +13,5 @@ import { Beam } from '@onbeam/node'
 
 const beam = new Beam('your-api-key');
 
-const game = await beam.games.createGame({
-  name: 'your-game'
-})
+const game = await beam.games.getGame();
 ```
