@@ -3,6 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreateAccountRequestInput = {
-  playerId: string;
+export type GetTransactionsRequestInput = {
+  accountId?: string;
+  playerId?: string;
+  policyId?: string;
 };

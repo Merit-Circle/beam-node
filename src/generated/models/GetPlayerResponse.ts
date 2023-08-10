@@ -6,7 +6,7 @@
 export type GetPlayerResponse = {
   id: string;
   identifier: string;
-  wallets: Array<{
+  accounts: Array<{
     id: string;
     playerId: string;
     address: string;

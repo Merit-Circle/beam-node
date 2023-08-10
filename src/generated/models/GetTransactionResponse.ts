@@ -12,17 +12,6 @@ export type GetTransactionResponse = {
     };
   };
   policy?: {
-    id: string;
-    object: string;
-    createdAt: number;
-    name: string | null;
-    deleted: boolean;
-    chainId: number;
-    strategy: {
-      sponsorSchema: GetTransactionResponse.sponsorSchema;
-      tokenContract?: string;
-      tokenContractAmount?: string;
-    };
     transactionIntents?: Array<{
       nextAction?: {
         type: 'sign_with_wallet';
@@ -33,13 +22,6 @@ export type GetTransactionResponse = {
       };
       policy?: any;
       player?: {
-        id: string;
-        object: string;
-        createdAt: number;
-        name: string | null;
-        email: string | null;
-        description: string | null;
-        metadata: string;
         transactionIntents?: any[];
         accounts?: Array<{
           transactionIntents?: any[];
@@ -47,13 +29,19 @@ export type GetTransactionResponse = {
           object: string;
           createdAt: number;
           address: string;
-          ownerAddress?: string;
+          ownerAddress: string;
           deployed: boolean;
           custodial: boolean;
           chainId: number;
           accountType: string;
           pendingOwnerAddress?: string;
         }>;
+        id: string;
+        object: string;
+        createdAt: number;
+        name: string | null;
+        description: string | null;
+        metadata: string;
       };
       account?: any;
       id: string;
@@ -124,6 +112,17 @@ export type GetTransactionResponse = {
         publicVerification: boolean;
       };
     }>;
+    id: string;
+    object: string;
+    createdAt: number;
+    name: string | null;
+    deleted: boolean;
+    chainId: number;
+    strategy: {
+      sponsorSchema: GetTransactionResponse.sponsorSchema;
+      tokenContract?: string;
+      tokenContractAmount?: string;
+    };
   };
   player?: any;
   account?: any;

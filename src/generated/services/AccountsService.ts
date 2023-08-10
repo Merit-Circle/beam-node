@@ -12,7 +12,7 @@ import type { GetAllAccountsResponse } from '../models/GetAllAccountsResponse';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
 
-export class AccountService {
+export class AccountsService {
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -21,12 +21,12 @@ export class AccountService {
    * @returns CreateAccountResponse
    * @throws ApiError
    */
-  public account(
+  public createAcount(
     requestBody: CreateAccountRequestInput,
   ): CancelablePromise<CreateAccountResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/account',
+      url: '/v1/accounts',
       body: requestBody,
       mediaType: 'application/json',
     });
@@ -37,10 +37,10 @@ export class AccountService {
    * @returns GetAllAccountsResponse
    * @throws ApiError
    */
-  public account1(): CancelablePromise<GetAllAccountsResponse> {
+  public getAllAccounts(): CancelablePromise<GetAllAccountsResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/account',
+      url: '/v1/accounts',
     });
   }
 
@@ -50,10 +50,12 @@ export class AccountService {
    * @returns GetAccountResponse
    * @throws ApiError
    */
-  public getAccount(accountId: string): CancelablePromise<GetAccountResponse> {
+  public getAccountById(
+    accountId: string,
+  ): CancelablePromise<GetAccountResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/account/{accountId}',
+      url: '/v1/accounts/{accountId}',
       path: {
         accountId: accountId,
       },
@@ -73,7 +75,7 @@ export class AccountService {
   ): CancelablePromise<CreateTransferOwnershipRequestResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/account/{accountId}/create-transfer-request',
+      url: '/v1/accounts/{accountId}/create-transfer-request',
       path: {
         accountId: accountId,
       },

@@ -5,6 +5,8 @@
 import type { GenerateLinkCodeRequestInput } from '../models/GenerateLinkCodeRequestInput';
 import type { GenerateLinkCodeResponse } from '../models/GenerateLinkCodeResponse';
 import type { GetGameResponse } from '../models/GetGameResponse';
+import type { UpdateGameRequestInput } from '../models/UpdateGameRequestInput';
+import type { UpdateGameResponse } from '../models/UpdateGameResponse';
 
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -25,12 +27,29 @@ export class GameService {
   }
 
   /**
+   * Updating name, description and/or coverImageUrl
+   * @param requestBody
+   * @returns UpdateGameResponse Game was successfully updated
+   * @throws ApiError
+   */
+  public updateGame(
+    requestBody: UpdateGameRequestInput,
+  ): CancelablePromise<UpdateGameResponse> {
+    return this.httpRequest.request({
+      method: 'PATCH',
+      url: '/v1/game',
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
+  /**
    * Generate QR code for linking player to the game
    * @param requestBody
    * @returns GenerateLinkCodeResponse The QR code was successfully created
    * @throws ApiError
    */
-  public generateLinkCode(
+  public generateConnectionRequest(
     requestBody: GenerateLinkCodeRequestInput,
   ): CancelablePromise<GenerateLinkCodeResponse> {
     return this.httpRequest.request({

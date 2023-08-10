@@ -3,6 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreateAccountRequestInput = {
-  playerId: string;
+export type UpdateGameRequestInput = {
+  name: string;
+  description: string | null;
+  coverImageUrl: string | null;
 };

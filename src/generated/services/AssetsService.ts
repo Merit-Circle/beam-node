@@ -8,7 +8,7 @@ import type { GetPlayerAssetsResponse } from '../models/GetPlayerAssetsResponse'
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
 
-export class AssetService {
+export class AssetsService {
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -19,14 +19,14 @@ export class AssetService {
    * @returns GetPlayerAssetsResponse
    * @throws ApiError
    */
-  public getPlayerAssetsForGame(
+  public getAssetsByPlayer(
     playerId: string,
     limit?: number,
     offset?: number,
   ): CancelablePromise<GetPlayerAssetsResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/asset/player/{playerId}',
+      url: '/v1/assets/player/{playerId}',
       path: {
         playerId: playerId,
       },
@@ -43,12 +43,12 @@ export class AssetService {
    * @returns GetAssetListingsResponse
    * @throws ApiError
    */
-  public getPlayerAssetListingsForGame(
+  public getListedAssetsByPlayer(
     playerId: string,
   ): CancelablePromise<GetAssetListingsResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/asset/player/{playerId}/listings',
+      url: '/v1/assets/player/{playerId}/listings',
       path: {
         playerId: playerId,
       },

@@ -21,6 +21,11 @@ export type { GetAllAccountsResponse } from './generated/models/GetAllAccountsRe
 export type { GetAllPlayersResponse } from './generated/models/GetAllPlayersResponse';
 export type { GetAssetListingsResponse } from './generated/models/GetAssetListingsResponse';
 export type { GetGameResponse } from './generated/models/GetGameResponse';
+export { GetInventoryResponse } from './generated/models/GetInventoryResponse';
 export type { GetPlayerAssetsResponse } from './generated/models/GetPlayerAssetsResponse';
 export type { GetPlayerResponse } from './generated/models/GetPlayerResponse';
 export { GetTransactionResponse } from './generated/models/GetTransactionResponse';
+export type { GetTransactionsRequestInput } from './generated/models/GetTransactionsRequestInput';
+export type { GetTransactionsResponse } from './generated/models/GetTransactionsResponse';
+export type { UpdateGameRequestInput } from './generated/models/UpdateGameRequestInput';
+export type { UpdateGameResponse } from './generated/models/UpdateGameResponse';

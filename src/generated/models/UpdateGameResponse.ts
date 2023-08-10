@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type GetGameResponse = {
+export type UpdateGameResponse = {
   id: number;
   name: string;
   description: string | null;

@@ -7,11 +7,13 @@ import type { ConfirmTransactionResponse } from '../models/ConfirmTransactionRes
 import type { CreateTransactionRequestInput } from '../models/CreateTransactionRequestInput';
 import type { CreateTransactionResponse } from '../models/CreateTransactionResponse';
 import type { GetTransactionResponse } from '../models/GetTransactionResponse';
+import type { GetTransactionsRequestInput } from '../models/GetTransactionsRequestInput';
+import type { GetTransactionsResponse } from '../models/GetTransactionsResponse';
 
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
 
-export class TransactionService {
+export class TransactionsService {
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -25,7 +27,32 @@ export class TransactionService {
   ): CancelablePromise<CreateTransactionResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/transaction',
+      url: '/v1/transactions',
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * Get all the transactions
+   * @param requestBody
+   * @param limit
+   * @param offset
+   * @returns GetTransactionsResponse
+   * @throws ApiError
+   */
+  public getTransactions(
+    requestBody: GetTransactionsRequestInput,
+    limit?: number,
+    offset?: number,
+  ): CancelablePromise<GetTransactionsResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/transactions',
+      query: {
+        limit: limit,
+        offset: offset,
+      },
       body: requestBody,
       mediaType: 'application/json',
     });
@@ -42,7 +69,7 @@ export class TransactionService {
   ): CancelablePromise<ConfirmTransactionResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/transaction/signature',
+      url: '/v1/transactions/signature',
       body: requestBody,
       mediaType: 'application/json',
     });
@@ -50,16 +77,18 @@ export class TransactionService {
 
   /**
    * Getting a transaction
-   * @param id
+   * @param transactionId
    * @returns GetTransactionResponse
    * @throws ApiError
    */
-  public getTransaction(id: string): CancelablePromise<GetTransactionResponse> {
+  public getTransaction(
+    transactionId: string,
+  ): CancelablePromise<GetTransactionResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/transaction/{id}',
+      url: '/v1/transactions/{transactionId}',
       path: {
-        id: id,
+        transactionId: transactionId,
       },
     });
   }

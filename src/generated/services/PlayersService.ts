@@ -10,7 +10,7 @@ import type { GetPlayerResponse } from '../models/GetPlayerResponse';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
 
-export class PlayerService {
+export class PlayersService {
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -24,7 +24,7 @@ export class PlayerService {
   ): CancelablePromise<CreatePlayerResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/player',
+      url: '/v1/players',
       body: requestBody,
       mediaType: 'application/json',
     });
@@ -43,7 +43,7 @@ export class PlayerService {
   ): CancelablePromise<GetAllPlayersResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/player',
+      url: '/v1/players',
       query: {
         limit: limit,
         offset: offset,
@@ -60,7 +60,7 @@ export class PlayerService {
   public getPlayer(playerId: string): CancelablePromise<GetPlayerResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/player/{playerId}',
+      url: '/v1/players/{playerId}',
       path: {
         playerId: playerId,
       },

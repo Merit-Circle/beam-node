@@ -6,20 +6,22 @@ import type { BaseHttpRequest } from './core/BaseHttpRequest';
 import { NodeHttpRequest } from './core/NodeHttpRequest';
 import type { OpenAPIConfig } from './core/OpenAPI';
 
-import { AccountService } from './services/AccountService';
-import { AssetService } from './services/AssetService';
+import { AccountsService } from './services/AccountsService';
+import { AssetsService } from './services/AssetsService';
 import { GameService } from './services/GameService';
-import { PlayerService } from './services/PlayerService';
-import { TransactionService } from './services/TransactionService';
+import { InventoriesService } from './services/InventoriesService';
+import { PlayersService } from './services/PlayersService';
+import { TransactionsService } from './services/TransactionsService';
 
 type HttpRequestConstructor = new (_config: OpenAPIConfig) => BaseHttpRequest;
 
 export class ApiClient {
-  public readonly account: AccountService;
-  public readonly asset: AssetService;
+  public readonly accounts: AccountsService;
+  public readonly assets: AssetsService;
   public readonly game: GameService;
-  public readonly player: PlayerService;
-  public readonly transaction: TransactionService;
+  public readonly inventories: InventoriesService;
+  public readonly players: PlayersService;
+  public readonly transactions: TransactionsService;
 
   public readonly request: BaseHttpRequest;
 
@@ -39,10 +41,11 @@ export class ApiClient {
       ENCODE_PATH: config?.ENCODE_PATH,
     });
 
-    this.account = new AccountService(this.request);
-    this.asset = new AssetService(this.request);
+    this.accounts = new AccountsService(this.request);
+    this.assets = new AssetsService(this.request);
     this.game = new GameService(this.request);
-    this.player = new PlayerService(this.request);
-    this.transaction = new TransactionService(this.request);
+    this.inventories = new InventoriesService(this.request);
+    this.players = new PlayersService(this.request);
+    this.transactions = new TransactionsService(this.request);
   }
 }
