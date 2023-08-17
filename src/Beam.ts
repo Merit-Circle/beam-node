@@ -1,9 +1,8 @@
 import {
-  AccountsService,
   AssetsService,
+  ChainService,
   GameService,
-  InventoriesService,
-  PlayersService,
+  ProfilesService,
   TransactionsService,
 } from './generated';
 import { ApiClient } from './generated/ApiClient';
@@ -23,16 +22,12 @@ export class Beam {
     });
   }
 
-  public get accounts(): AccountsService {
-    return this.client.accounts;
-  }
-
-  public get games(): GameService {
+  public get game(): GameService {
     return this.client.game;
   }
 
-  public get players(): PlayersService {
-    return this.client.players;
+  public get profiles(): ProfilesService {
+    return this.client.profiles;
   }
 
   public get transactions(): TransactionsService {
@@ -43,7 +38,7 @@ export class Beam {
     return this.client.assets;
   }
 
-  public get inventories(): InventoriesService {
-    return this.client.inventories;
+  public get chain(): ChainService {
+    return this.client.chain;
   }
 }

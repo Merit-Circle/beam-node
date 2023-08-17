@@ -4,13 +4,6 @@
 /* eslint-disable */
 
 export type CreateTransactionResponse = {
-  nextAction?: {
-    type: CreateTransactionResponse.type;
-    payload: {
-      userOp?: any;
-      userOpHash?: string;
-    };
-  };
   policy?: {
     transactionIntents?: Array<{
       nextAction?: {
@@ -26,7 +19,7 @@ export type CreateTransactionResponse = {
         accounts?: Array<{
           transactionIntents?: any[];
           id: string;
-          object: string;
+          object: 'account';
           createdAt: number;
           address: string;
           ownerAddress: string;
@@ -37,7 +30,7 @@ export type CreateTransactionResponse = {
           pendingOwnerAddress?: string;
         }>;
         id: string;
-        object: string;
+        object: 'player';
         createdAt: number;
         name: string | null;
         description: string | null;
@@ -45,7 +38,7 @@ export type CreateTransactionResponse = {
       };
       account?: any;
       id: string;
-      object: string;
+      object: 'transactionIntent';
       createdAt: number;
       updatedAt: number;
       chainId: number;
@@ -80,13 +73,11 @@ export type CreateTransactionResponse = {
     }>;
     policyRules?: Array<{
       id: string;
-      object: string;
+      object: 'policyRule';
       createdAt: number;
-      type: 'contract_functions' | 'account_functions';
-      functionName?: string;
       contract?: {
         id: string;
-        object: string;
+        object: 'contract';
         createdAt: number;
         name: string | null;
         chainId: number;
@@ -111,9 +102,11 @@ export type CreateTransactionResponse = {
         }>;
         publicVerification: boolean;
       };
+      type: 'contract_functions' | 'account_functions';
+      functionName?: string;
     }>;
     id: string;
-    object: string;
+    object: CreateTransactionResponse.object;
     createdAt: number;
     name: string | null;
     deleted: boolean;
@@ -127,7 +120,7 @@ export type CreateTransactionResponse = {
   player?: any;
   account?: any;
   id: string;
-  object: string;
+  object: CreateTransactionResponse.object;
   createdAt: number;
   updatedAt: number;
   chainId: number;
@@ -162,8 +155,8 @@ export type CreateTransactionResponse = {
 };
 
 export namespace CreateTransactionResponse {
-  export enum type {
-    SIGN_WITH_WALLET = 'sign_with_wallet',
+  export enum object {
+    POLICY = 'policy',
   }
 
   export enum sponsorSchema {

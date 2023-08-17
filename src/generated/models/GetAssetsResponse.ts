@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type GetPlayerAssetsResponse = {
+export type GetAssetsResponse = {
   data: Array<{
     id: string;
     name: string;

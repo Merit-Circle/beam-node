@@ -4,16 +4,17 @@
 /* eslint-disable */
 
 export type GetGameResponse = {
-  id: number;
+  id: string;
   name: string;
   description: string | null;
   coverImageUrl: string | null;
   contracts: Array<{
     type: 'ERC20' | 'ERC721' | 'ERC1155' | 'SEAPORT';
     id: string;
+    externalId: string;
     address: string;
     chainId: number;
-    gameId: number;
+    gameId: string;
   }>;
   policies: Array<{
     model: 'ContractFunctions' | 'AccountFunctions';
@@ -21,7 +22,7 @@ export type GetGameResponse = {
     id: string;
     name: string;
     chainId: number;
-    gameId: number;
+    gameId: string;
     token: string | null;
     exchangeRate: string | null;
   }>;

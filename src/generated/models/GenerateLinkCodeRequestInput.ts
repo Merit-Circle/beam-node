@@ -4,6 +4,6 @@
 /* eslint-disable */
 
 export type GenerateLinkCodeRequestInput = {
+  profileId: string;
   callbackUrl: string;
-  playerId?: string;
 };

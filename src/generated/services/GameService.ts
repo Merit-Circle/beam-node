@@ -2,8 +2,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { GenerateLinkCodeRequestInput } from '../models/GenerateLinkCodeRequestInput';
-import type { GenerateLinkCodeResponse } from '../models/GenerateLinkCodeResponse';
 import type { GetGameResponse } from '../models/GetGameResponse';
 import type { UpdateGameRequestInput } from '../models/UpdateGameRequestInput';
 import type { UpdateGameResponse } from '../models/UpdateGameResponse';
@@ -38,23 +36,6 @@ export class GameService {
     return this.httpRequest.request({
       method: 'PATCH',
       url: '/v1/game',
-      body: requestBody,
-      mediaType: 'application/json',
-    });
-  }
-
-  /**
-   * Generate QR code for linking player to the game
-   * @param requestBody
-   * @returns GenerateLinkCodeResponse The QR code was successfully created
-   * @throws ApiError
-   */
-  public generateConnectionRequest(
-    requestBody: GenerateLinkCodeRequestInput,
-  ): CancelablePromise<GenerateLinkCodeResponse> {
-    return this.httpRequest.request({
-      method: 'POST',
-      url: '/v1/game/link',
       body: requestBody,
       mediaType: 'application/json',
     });

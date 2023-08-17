@@ -3,8 +3,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreatePlayerResponse = {
-  id: string;
-  identifier: string;
-  clerkId: string | null;
+export type CreateProfileRequestInput = {
+  profileId: string;
 };

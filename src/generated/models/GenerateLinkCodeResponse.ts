@@ -4,5 +4,5 @@
 /* eslint-disable */
 
 export type GenerateLinkCodeResponse = {
-  code: string;
+  challenge: string;
 };

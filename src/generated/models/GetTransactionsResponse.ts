@@ -5,13 +5,6 @@
 
 export type GetTransactionsResponse = {
   data: Array<{
-    nextAction?: {
-      type: 'sign_with_wallet';
-      payload: {
-        userOp?: any;
-        userOpHash?: string;
-      };
-    };
     policy?: {
       transactionIntents?: Array<{
         nextAction?: {
@@ -27,7 +20,7 @@ export type GetTransactionsResponse = {
           accounts?: Array<{
             transactionIntents?: any[];
             id: string;
-            object: string;
+            object: 'account';
             createdAt: number;
             address: string;
             ownerAddress: string;
@@ -38,7 +31,7 @@ export type GetTransactionsResponse = {
             pendingOwnerAddress?: string;
           }>;
           id: string;
-          object: string;
+          object: 'player';
           createdAt: number;
           name: string | null;
           description: string | null;
@@ -46,7 +39,7 @@ export type GetTransactionsResponse = {
         };
         account?: any;
         id: string;
-        object: string;
+        object: 'transactionIntent';
         createdAt: number;
         updatedAt: number;
         chainId: number;
@@ -81,13 +74,11 @@ export type GetTransactionsResponse = {
       }>;
       policyRules?: Array<{
         id: string;
-        object: string;
+        object: 'policyRule';
         createdAt: number;
-        type: 'contract_functions' | 'account_functions';
-        functionName?: string;
         contract?: {
           id: string;
-          object: string;
+          object: 'contract';
           createdAt: number;
           name: string | null;
           chainId: number;
@@ -112,9 +103,11 @@ export type GetTransactionsResponse = {
           }>;
           publicVerification: boolean;
         };
+        type: 'contract_functions' | 'account_functions';
+        functionName?: string;
       }>;
       id: string;
-      object: string;
+      object: 'policy';
       createdAt: number;
       name: string | null;
       deleted: boolean;
@@ -128,7 +121,7 @@ export type GetTransactionsResponse = {
     player?: any;
     account?: any;
     id: string;
-    object: string;
+    object: 'transactionIntent';
     createdAt: number;
     updatedAt: number;
     chainId: number;

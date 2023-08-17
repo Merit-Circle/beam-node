@@ -6,21 +6,19 @@ import type { BaseHttpRequest } from './core/BaseHttpRequest';
 import { NodeHttpRequest } from './core/NodeHttpRequest';
 import type { OpenAPIConfig } from './core/OpenAPI';
 
-import { AccountsService } from './services/AccountsService';
 import { AssetsService } from './services/AssetsService';
+import { ChainService } from './services/ChainService';
 import { GameService } from './services/GameService';
-import { InventoriesService } from './services/InventoriesService';
-import { PlayersService } from './services/PlayersService';
+import { ProfilesService } from './services/ProfilesService';
 import { TransactionsService } from './services/TransactionsService';
 
 type HttpRequestConstructor = new (_config: OpenAPIConfig) => BaseHttpRequest;
 
 export class ApiClient {
-  public readonly accounts: AccountsService;
   public readonly assets: AssetsService;
+  public readonly chain: ChainService;
   public readonly game: GameService;
-  public readonly inventories: InventoriesService;
-  public readonly players: PlayersService;
+  public readonly profiles: ProfilesService;
   public readonly transactions: TransactionsService;
 
   public readonly request: BaseHttpRequest;
@@ -41,11 +39,10 @@ export class ApiClient {
       ENCODE_PATH: config?.ENCODE_PATH,
     });
 
-    this.accounts = new AccountsService(this.request);
     this.assets = new AssetsService(this.request);
+    this.chain = new ChainService(this.request);
     this.game = new GameService(this.request);
-    this.inventories = new InventoriesService(this.request);
-    this.players = new PlayersService(this.request);
+    this.profiles = new ProfilesService(this.request);
     this.transactions = new TransactionsService(this.request);
   }
 }
