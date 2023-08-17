@@ -4,8 +4,6 @@
 /* eslint-disable */
 
 export type CreateTransactionRequestInput = {
-  playerId: string;
-  chainId: number;
   interactions: Array<{
     contract: string;
     functionName: string;
@@ -13,6 +11,4 @@ export type CreateTransactionRequestInput = {
   }>;
   optimistic: boolean;
   policyId?: string;
-  discriminator?: string;
-  attributeTypes: string;
 };

@@ -3,6 +3,4 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreatePlayerRequestInput = {
-  identifier: string;
-};
+export type GetAssetResponse = {};

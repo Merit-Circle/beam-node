@@ -3,10 +3,12 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreateAccountResponse = {
-  id: string;
-  playerId: string;
-  address: string;
+export type GetChainResponse = {
   chainId: number;
-  custodial: boolean;
+  blockNumber: number;
+  nativeCurrency: {
+    name: string;
+    symbol: string;
+    decimals: number;
+  };
 };

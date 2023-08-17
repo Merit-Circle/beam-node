@@ -2,12 +2,9 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { ConfirmTransactionRequestInput } from '../models/ConfirmTransactionRequestInput';
-import type { ConfirmTransactionResponse } from '../models/ConfirmTransactionResponse';
 import type { CreateTransactionRequestInput } from '../models/CreateTransactionRequestInput';
 import type { CreateTransactionResponse } from '../models/CreateTransactionResponse';
 import type { GetTransactionResponse } from '../models/GetTransactionResponse';
-import type { GetTransactionsRequestInput } from '../models/GetTransactionsRequestInput';
 import type { GetTransactionsResponse } from '../models/GetTransactionsResponse';
 
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
@@ -17,32 +14,13 @@ export class TransactionsService {
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
-   * Creating a new transaction
-   * @param requestBody
-   * @returns CreateTransactionResponse
-   * @throws ApiError
-   */
-  public createTransaction(
-    requestBody: CreateTransactionRequestInput,
-  ): CancelablePromise<CreateTransactionResponse> {
-    return this.httpRequest.request({
-      method: 'POST',
-      url: '/v1/transactions',
-      body: requestBody,
-      mediaType: 'application/json',
-    });
-  }
-
-  /**
-   * Get all the transactions
-   * @param requestBody
+   * Get a paginated list of transactions from your game
    * @param limit
    * @param offset
    * @returns GetTransactionsResponse
    * @throws ApiError
    */
   public getTransactions(
-    requestBody: GetTransactionsRequestInput,
     limit?: number,
     offset?: number,
   ): CancelablePromise<GetTransactionsResponse> {
@@ -53,25 +31,6 @@ export class TransactionsService {
         limit: limit,
         offset: offset,
       },
-      body: requestBody,
-      mediaType: 'application/json',
-    });
-  }
-
-  /**
-   * Confirming a transaction
-   * @param requestBody
-   * @returns ConfirmTransactionResponse
-   * @throws ApiError
-   */
-  public confirmTransaction(
-    requestBody: ConfirmTransactionRequestInput,
-  ): CancelablePromise<ConfirmTransactionResponse> {
-    return this.httpRequest.request({
-      method: 'POST',
-      url: '/v1/transactions/signature',
-      body: requestBody,
-      mediaType: 'application/json',
     });
   }
 
@@ -90,6 +49,54 @@ export class TransactionsService {
       path: {
         transactionId: transactionId,
       },
+    });
+  }
+
+  /**
+   * Get a paginated list of transactions created on behalf of a prfoile
+   * @param profileId
+   * @param limit
+   * @param offset
+   * @returns GetTransactionsResponse
+   * @throws ApiError
+   */
+  public getProfileTransactions(
+    profileId: string,
+    limit?: number,
+    offset?: number,
+  ): CancelablePromise<GetTransactionsResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/transactions/profiles/{profileId}',
+      path: {
+        profileId: profileId,
+      },
+      query: {
+        limit: limit,
+        offset: offset,
+      },
+    });
+  }
+
+  /**
+   * Creating a new transaction on behalf of a profile
+   * @param profileId
+   * @param requestBody
+   * @returns CreateTransactionResponse
+   * @throws ApiError
+   */
+  public createProfileTransaction(
+    profileId: string,
+    requestBody: CreateTransactionRequestInput,
+  ): CancelablePromise<CreateTransactionResponse> {
+    return this.httpRequest.request({
+      method: 'POST',
+      url: '/v1/transactions/profiles/{profileId}',
+      path: {
+        profileId: profileId,
+      },
+      body: requestBody,
+      mediaType: 'application/json',
     });
   }
 }

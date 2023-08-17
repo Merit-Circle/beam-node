@@ -3,17 +3,17 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type GetAllAccountsResponse = {
-  data: Array<{
+export type GetProfileResponse = {
+  id: string;
+  gameId: string;
+  externalId: string;
+  userId: string | null;
+  wallets: Array<{
     id: string;
-    playerId: string;
+    externalId: string;
     address: string;
     chainId: number;
     custodial: boolean;
+    profileId: string;
   }>;
-  pagination: {
-    count: number;
-    limit?: number;
-    offset?: number;
-  };
 };

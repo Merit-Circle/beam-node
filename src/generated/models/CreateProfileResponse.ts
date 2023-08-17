@@ -3,14 +3,17 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type GetPlayerResponse = {
+export type CreateProfileResponse = {
   id: string;
-  identifier: string;
-  accounts: Array<{
+  gameId: string;
+  externalId: string;
+  userId: string | null;
+  wallets: Array<{
     id: string;
-    playerId: string;
+    externalId: string;
     address: string;
     chainId: number;
     custodial: boolean;
+    profileId: string;
   }>;
 };
