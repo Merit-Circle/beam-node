@@ -13,6 +13,7 @@ export type GetGameResponse = {
     id: string;
     externalId: string;
     address: string;
+    name: string;
     chainId: number;
     gameId: string;
   }>;

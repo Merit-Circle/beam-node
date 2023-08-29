@@ -10,6 +10,7 @@ export type GetAssetsResponse = {
     imageUrl: string | null;
     assetType: string;
     assetAddress: string;
+    assetId: string;
     quantity: number;
   }>;
   pagination: {

@@ -3,6 +3,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type GenerateLinkCodeRequestInput = {
-  callbackUrl: string;
+export type BuyAssetResponse = {
+  success: boolean;
 };

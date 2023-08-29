@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type GenerateLinkCodeRequestInput = {
-  callbackUrl: string;
+export type BuyAssetRequestInput = {
+  orderId: string;
+  quantity: number;
 };

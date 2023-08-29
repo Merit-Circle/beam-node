@@ -3,6 +3,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type GenerateLinkCodeRequestInput = {
+export type GenerateSignInCodeRequestInput = {
   callbackUrl: string;
 };
