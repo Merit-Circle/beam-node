@@ -9,4 +9,3 @@ export type TransferAssetRequestInput = {
   assetId: number;
   optimistic?: boolean;
 };
-

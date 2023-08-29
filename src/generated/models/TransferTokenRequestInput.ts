@@ -10,4 +10,3 @@ export type TransferTokenRequestInput = {
   optimistic?: boolean;
   sponsor?: boolean;
 };
-

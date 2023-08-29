@@ -17,11 +17,10 @@ import type { TransferNativeTokenRequestInput } from '../models/TransferNativeTo
 import type { TransferTokenRequestInput } from '../models/TransferTokenRequestInput';
 import type { TransferTokenResponse } from '../models/TransferTokenResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class AssetsService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -41,11 +40,11 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/profiles/{profileId}',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
       query: {
-        'limit': limit,
-        'offset': offset,
+        limit: limit,
+        offset: offset,
       },
     });
   }
@@ -63,7 +62,7 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/profiles/{profileId}/listed',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
     });
   }
@@ -81,7 +80,7 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/profiles/{profileId}/currencies',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
     });
   }
@@ -99,7 +98,7 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/profiles/{profileId}/native',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
     });
   }
@@ -119,7 +118,7 @@ export class AssetsService {
       method: 'POST',
       url: '/v1/assets/profiles/{profileId}/transfer-asset',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -141,7 +140,7 @@ export class AssetsService {
       method: 'POST',
       url: '/v1/assets/profiles/{profileId}/transfer-token',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -163,7 +162,7 @@ export class AssetsService {
       method: 'POST',
       url: '/v1/assets/profiles/{profileId}/transfer-native',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -185,7 +184,7 @@ export class AssetsService {
       method: 'POST',
       url: '/v1/assets/profiles/{profileId}/sell',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -207,7 +206,7 @@ export class AssetsService {
       method: 'POST',
       url: '/v1/assets/profiles/{profileId}/buy',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -231,11 +230,11 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/{contractAddress}',
       path: {
-        'contractAddress': contractAddress,
+        contractAddress: contractAddress,
       },
       query: {
-        'limit': limit,
-        'offset': offset,
+        limit: limit,
+        offset: offset,
       },
     });
   }
@@ -255,10 +254,9 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/{contractAddress}/{assetId}',
       path: {
-        'contractAddress': contractAddress,
-        'assetId': assetId,
+        contractAddress: contractAddress,
+        assetId: assetId,
       },
     });
   }
-
 }

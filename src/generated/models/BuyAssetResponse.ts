@@ -6,4 +6,3 @@
 export type BuyAssetResponse = {
   success: boolean;
 };
-

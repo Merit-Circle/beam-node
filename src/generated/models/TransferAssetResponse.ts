@@ -10,7 +10,6 @@ export type TransferAssetResponse = {
 };
 
 export namespace TransferAssetResponse {
-
   export enum status {
     PENDING = 'pending',
     SUCCESS = 'success',
@@ -20,7 +19,4 @@ export namespace TransferAssetResponse {
     CUSTODIAL = 'custodial',
     SELF_CUSTODIAL = 'self-custodial',
   }
-
-
 }
-
