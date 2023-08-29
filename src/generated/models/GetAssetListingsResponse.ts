@@ -11,13 +11,14 @@ export type GetAssetListingsResponse = {
     startPrice: string | null;
     endPrice: string | null;
     platformFee: number;
+    royaltyFee: number;
     currency: string;
     startTime: string | null;
     endTime: string | null;
     quantityListed: number;
     signedOrderId: string;
     expiresAt: string;
-    userId: string;
+    sellerAddress: string;
     contractId: string;
     nft: {
       id: string;
@@ -25,7 +26,7 @@ export type GetAssetListingsResponse = {
       imageUrl: string | null;
       assetType: string;
       assetAddress: string;
-      quantity: number;
+      assetId: string;
     };
   }>;
   pagination: {
@@ -34,3 +35,4 @@ export type GetAssetListingsResponse = {
     offset?: number;
   };
 };
+

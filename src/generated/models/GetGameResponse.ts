@@ -13,6 +13,7 @@ export type GetGameResponse = {
     id: string;
     externalId: string;
     address: string;
+    name: string;
     chainId: number;
     gameId: string;
   }>;
@@ -27,3 +28,4 @@ export type GetGameResponse = {
     exchangeRate: string | null;
   }>;
 };
+

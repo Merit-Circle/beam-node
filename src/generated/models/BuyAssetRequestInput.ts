@@ -3,7 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type GenerateLinkCodeResponse = {
-  challenge: string;
+export type BuyAssetRequestInput = {
+  orderId: string;
+  quantity: number;
 };
 

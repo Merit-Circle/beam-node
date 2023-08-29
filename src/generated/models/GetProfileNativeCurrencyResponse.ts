@@ -9,7 +9,8 @@ export type GetProfileNativeCurrencyResponse = {
     symbol: string;
     decimals: number;
     logoUri?: string;
-    chainId: string;
+    chainId: number;
     balance: string;
   };
 };
+

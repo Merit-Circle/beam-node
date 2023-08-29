@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type GenerateLinkCodeResponse = {
+export type GenerateSignInCodeResponse = {
   challenge: string;
 };
 

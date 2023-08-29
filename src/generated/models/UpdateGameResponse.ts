@@ -13,6 +13,7 @@ export type UpdateGameResponse = {
     id: string;
     externalId: string;
     address: string;
+    name: string;
     chainId: number;
     gameId: string;
   }>;
@@ -27,3 +28,4 @@ export type UpdateGameResponse = {
     exchangeRate: string | null;
   }>;
 };
+

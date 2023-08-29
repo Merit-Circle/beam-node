@@ -8,3 +8,4 @@ export type UpdateGameRequestInput = {
   description: string | null;
   coverImageUrl: string | null;
 };
+

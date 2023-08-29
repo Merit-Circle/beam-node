@@ -10,7 +10,8 @@ export type GetProfileCurrenciesResponse = {
     symbol: string;
     decimals: number;
     logoUri?: string;
-    chainId: string;
+    chainId: number;
     balance: string;
   }>;
 };
+

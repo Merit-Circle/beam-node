@@ -17,3 +17,4 @@ export type CreateProfileResponse = {
     profileId: string;
   }>;
 };
+

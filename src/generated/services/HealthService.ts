@@ -2,23 +2,29 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { GetChainResponse } from '../models/GetChainResponse';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
-export class ChainService {
+export class HealthService {
 
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
-   * @returns GetChainResponse
+   * @returns any The Health Check is successful
    * @throws ApiError
    */
-  public chain(): CancelablePromise<GetChainResponse> {
+  public check(): CancelablePromise<{
+    status?: string;
+    info?: Record<string, Record<string, string>> | null;
+    error?: Record<string, Record<string, string>> | null;
+    details?: Record<string, Record<string, string>>;
+  }> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/chain',
+      url: '/v1/health',
+      errors: {
+        503: `The Health Check is not successful`,
+      },
     });
   }
 
