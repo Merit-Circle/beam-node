@@ -12,6 +12,7 @@ export type { OpenAPIConfig } from './core/OpenAPI';
 
 export type { BuyAssetRequestInput } from './models/BuyAssetRequestInput';
 export type { BuyAssetResponse } from './models/BuyAssetResponse';
+export type { CancelAssetListingRequestInput } from './models/CancelAssetListingRequestInput';
 export type { CreateProfileRequestInput } from './models/CreateProfileRequestInput';
 export type { CreateProfileResponse } from './models/CreateProfileResponse';
 export type { CreateTransactionRequestInput } from './models/CreateTransactionRequestInput';
@@ -25,6 +26,7 @@ export type { GetAssetListingsResponse } from './models/GetAssetListingsResponse
 export { GetAssetResponse } from './models/GetAssetResponse';
 export type { GetAssetsResponse } from './models/GetAssetsResponse';
 export type { GetChainResponse } from './models/GetChainResponse';
+export type { GetGameListedAssetsRequestInput } from './models/GetGameListedAssetsRequestInput';
 export type { GetGameResponse } from './models/GetGameResponse';
 export type { GetProfileCurrenciesResponse } from './models/GetProfileCurrenciesResponse';
 export type { GetProfileNativeCurrencyResponse } from './models/GetProfileNativeCurrencyResponse';
@@ -40,6 +42,8 @@ export type { TransferTokenRequestInput } from './models/TransferTokenRequestInp
 export { TransferTokenResponse } from './models/TransferTokenResponse';
 export type { UpdateGameRequestInput } from './models/UpdateGameRequestInput';
 export type { UpdateGameResponse } from './models/UpdateGameResponse';
+export type { UpdateProfileRequestInput } from './models/UpdateProfileRequestInput';
+export type { UpdateProfileResponse } from './models/UpdateProfileResponse';
 
 export { AssetsService } from './services/AssetsService';
 export { ChainService } from './services/ChainService';

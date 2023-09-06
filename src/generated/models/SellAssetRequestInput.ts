@@ -10,6 +10,8 @@ export type SellAssetRequestInput = {
   startTime: string;
   endTime: string;
   sellType: SellAssetRequestInput.sellType;
+  sponsor?: boolean;
+  policyId?: string;
 };
 
 export namespace SellAssetRequestInput {

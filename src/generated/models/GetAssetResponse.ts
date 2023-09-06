@@ -40,7 +40,7 @@ export type GetAssetResponse = {
     name: string;
     slug: string;
     description?: string | null;
-    symbol: GetAssetResponse.tokenSymbol;
+    symbol: GetAssetResponse.currencySymbol;
     royalty?: number | null;
     royaltyAddress?: string | null;
     avatar: {
@@ -108,7 +108,7 @@ export namespace GetAssetResponse {
     ERC1155 = 'ERC1155',
   }
 
-  export enum tokenSymbol {
+  export enum currencySymbol {
     AVAX = 'Avax',
     ETH = 'Eth',
     MATIC = 'Matic',

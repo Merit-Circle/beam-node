@@ -10,6 +10,8 @@ import type { GenerateSignInCodeRequestInput } from '../models/GenerateSignInCod
 import type { GenerateSignInCodeResponse } from '../models/GenerateSignInCodeResponse';
 import type { GetAllProfilesResponse } from '../models/GetAllProfilesResponse';
 import type { GetProfileResponse } from '../models/GetProfileResponse';
+import type { UpdateProfileRequestInput } from '../models/UpdateProfileRequestInput';
+import type { UpdateProfileResponse } from '../models/UpdateProfileResponse';
 
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -59,6 +61,28 @@ export class ProfilesService {
       path: {
         profileId: profileId,
       },
+    });
+  }
+
+  /**
+   * Update a profile
+   * @param profileId
+   * @param requestBody
+   * @returns UpdateProfileResponse
+   * @throws ApiError
+   */
+  public updateProfile(
+    profileId: string,
+    requestBody: UpdateProfileRequestInput,
+  ): CancelablePromise<UpdateProfileResponse> {
+    return this.httpRequest.request({
+      method: 'PATCH',
+      url: '/v1/profiles/{profileId}',
+      path: {
+        profileId: profileId,
+      },
+      body: requestBody,
+      mediaType: 'application/json',
     });
   }
 

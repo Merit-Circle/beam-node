@@ -4,9 +4,11 @@
 /* eslint-disable */
 import type { BuyAssetRequestInput } from '../models/BuyAssetRequestInput';
 import type { BuyAssetResponse } from '../models/BuyAssetResponse';
+import type { CancelAssetListingRequestInput } from '../models/CancelAssetListingRequestInput';
 import type { GetAssetListingsResponse } from '../models/GetAssetListingsResponse';
 import type { GetAssetResponse } from '../models/GetAssetResponse';
 import type { GetAssetsResponse } from '../models/GetAssetsResponse';
+import type { GetGameListedAssetsRequestInput } from '../models/GetGameListedAssetsRequestInput';
 import type { GetProfileCurrenciesResponse } from '../models/GetProfileCurrenciesResponse';
 import type { GetProfileNativeCurrencyResponse } from '../models/GetProfileNativeCurrencyResponse';
 import type { SellAssetRequestInput } from '../models/SellAssetRequestInput';
@@ -24,7 +26,7 @@ export class AssetsService {
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
-   * Get all the assets of an account (NFT assets, e.g. ERC721 / ERC1155)
+   * Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
    * @param profileId
    * @param limit
    * @param offset
@@ -176,13 +178,13 @@ export class AssetsService {
    * @returns SellAssetResponse
    * @throws ApiError
    */
-  public sellAsset(
+  public listAssetForSale(
     profileId: string,
     requestBody: SellAssetRequestInput,
   ): CancelablePromise<SellAssetResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/assets/profiles/{profileId}/sell',
+      url: '/v1/assets/profiles/{profileId}/listing',
       path: {
         profileId: profileId,
       },
@@ -207,6 +209,61 @@ export class AssetsService {
       url: '/v1/assets/profiles/{profileId}/buy',
       path: {
         profileId: profileId,
+      },
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * Cancel asset listing
+   * @param profileId
+   * @param orderId
+   * @param requestBody
+   * @returns BuyAssetResponse
+   * @throws ApiError
+   */
+  public cancelAssetListing(
+    profileId: string,
+    orderId: string,
+    requestBody: CancelAssetListingRequestInput,
+  ): CancelablePromise<BuyAssetResponse> {
+    return this.httpRequest.request({
+      method: 'DELETE',
+      url: '/v1/assets/profiles/{profileId}/listing/{orderId}',
+      path: {
+        profileId: profileId,
+        orderId: orderId,
+      },
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * Get all listed assets for a game
+   * @param gameId
+   * @param requestBody
+   * @param limit
+   * @param offset
+   * @returns GetAssetListingsResponse
+   * @throws ApiError
+   */
+  public getListedAssets(
+    gameId: string,
+    requestBody: GetGameListedAssetsRequestInput,
+    limit?: number,
+    offset?: number,
+  ): CancelablePromise<GetAssetListingsResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/assets/game/listed',
+      path: {
+        gameId: gameId,
+      },
+      query: {
+        limit: limit,
+        offset: offset,
       },
       body: requestBody,
       mediaType: 'application/json',
