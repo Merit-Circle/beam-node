@@ -9,4 +9,5 @@ export type TransferTokenRequestInput = {
   amountToTransfer: string;
   optimistic?: boolean;
   sponsor?: boolean;
+  policyId?: string;
 };

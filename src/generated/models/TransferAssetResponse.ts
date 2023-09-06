@@ -7,6 +7,8 @@ export type TransferAssetResponse = {
   status: TransferAssetResponse.status;
   type: TransferAssetResponse.type;
   payloadToSign?: string;
+  transactionHash?: string;
+  explorerUrl?: string;
 };
 
 export namespace TransferAssetResponse {

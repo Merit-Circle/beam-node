@@ -13,7 +13,7 @@ export type UpdateGameResponse = {
     id: string;
     externalId: string;
     address: string;
-    name: string;
+    name: string | null;
     chainId: number;
     gameId: string;
   }>;

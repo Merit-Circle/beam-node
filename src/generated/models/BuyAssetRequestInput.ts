@@ -6,4 +6,7 @@
 export type BuyAssetRequestInput = {
   orderId: string;
   quantity: number;
+  optimistic?: boolean;
+  sponsor?: boolean;
+  policyId?: string;
 };

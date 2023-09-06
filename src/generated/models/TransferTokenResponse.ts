@@ -7,6 +7,8 @@ export type TransferTokenResponse = {
   status: TransferTokenResponse.status;
   type: TransferTokenResponse.type;
   payloadToSign?: string;
+  transactionHash?: string;
+  explorerUrl?: string;
 };
 
 export namespace TransferTokenResponse {
