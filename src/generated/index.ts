@@ -26,7 +26,6 @@ export type { GetAssetListingsResponse } from './models/GetAssetListingsResponse
 export { GetAssetResponse } from './models/GetAssetResponse';
 export type { GetAssetsResponse } from './models/GetAssetsResponse';
 export type { GetChainResponse } from './models/GetChainResponse';
-export type { GetGameListedAssetsRequestInput } from './models/GetGameListedAssetsRequestInput';
 export type { GetGameResponse } from './models/GetGameResponse';
 export type { GetProfileCurrenciesResponse } from './models/GetProfileCurrenciesResponse';
 export type { GetProfileNativeCurrencyResponse } from './models/GetProfileNativeCurrencyResponse';

@@ -8,7 +8,6 @@ import type { CancelAssetListingRequestInput } from '../models/CancelAssetListin
 import type { GetAssetListingsResponse } from '../models/GetAssetListingsResponse';
 import type { GetAssetResponse } from '../models/GetAssetResponse';
 import type { GetAssetsResponse } from '../models/GetAssetsResponse';
-import type { GetGameListedAssetsRequestInput } from '../models/GetGameListedAssetsRequestInput';
 import type { GetProfileCurrenciesResponse } from '../models/GetProfileCurrenciesResponse';
 import type { GetProfileNativeCurrencyResponse } from '../models/GetProfileNativeCurrencyResponse';
 import type { SellAssetRequestInput } from '../models/SellAssetRequestInput';
@@ -54,17 +53,25 @@ export class AssetsService {
   /**
    * Get all the assets listed by an account (NFT assets, e.g. ERC721 / ERC1155)
    * @param profileId
+   * @param limit
+   * @param offset
    * @returns GetAssetListingsResponse
    * @throws ApiError
    */
   public getProfileListedAssets(
     profileId: string,
+    limit?: number,
+    offset?: number,
   ): CancelablePromise<GetAssetListingsResponse> {
     return this.httpRequest.request({
       method: 'GET',
       url: '/v1/assets/profiles/{profileId}/listed',
       path: {
         profileId: profileId,
+      },
+      query: {
+        limit: limit,
+        offset: offset,
       },
     });
   }
@@ -243,7 +250,6 @@ export class AssetsService {
   /**
    * Get all listed assets for a game
    * @param gameId
-   * @param requestBody
    * @param limit
    * @param offset
    * @returns GetAssetListingsResponse
@@ -251,7 +257,6 @@ export class AssetsService {
    */
   public getListedAssets(
     gameId: string,
-    requestBody: GetGameListedAssetsRequestInput,
     limit?: number,
     offset?: number,
   ): CancelablePromise<GetAssetListingsResponse> {
@@ -265,29 +270,27 @@ export class AssetsService {
         limit: limit,
         offset: offset,
       },
-      body: requestBody,
-      mediaType: 'application/json',
     });
   }
 
   /**
    * Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
-   * @param contractAddress
+   * @param assetAddress
    * @param limit
    * @param offset
    * @returns GetAssetsResponse
    * @throws ApiError
    */
   public getContractAssets(
-    contractAddress: string,
+    assetAddress: string,
     limit?: number,
     offset?: number,
   ): CancelablePromise<GetAssetsResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/assets/{contractAddress}',
+      url: '/v1/assets/{assetAddress}',
       path: {
-        contractAddress: contractAddress,
+        assetAddress: assetAddress,
       },
       query: {
         limit: limit,
@@ -298,20 +301,20 @@ export class AssetsService {
 
   /**
    * Get a single NFT (e.g. ERC721 / ERC1155)
-   * @param contractAddress
+   * @param assetAddress
    * @param assetId
    * @returns GetAssetResponse
    * @throws ApiError
    */
   public getAsset(
-    contractAddress: string,
+    assetAddress: string,
     assetId: string,
   ): CancelablePromise<GetAssetResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/assets/{contractAddress}/{assetId}',
+      url: '/v1/assets/{assetAddress}/{assetId}',
       path: {
-        contractAddress: contractAddress,
+        assetAddress: assetAddress,
         assetId: assetId,
       },
     });
