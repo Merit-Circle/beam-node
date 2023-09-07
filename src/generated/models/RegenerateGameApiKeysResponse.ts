@@ -3,9 +3,16 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type UpdateGameRequestInput = {
+export type RegenerateGameApiKeysResponse = {
+  id: string;
   name: string;
   description: string | null;
   coverImageUrl: string | null;
+  apiKeys: Array<{
+    type: 'ReadOnly' | 'ReadAndWrite' | 'Regenerate';
+    id: string;
+    apiKey: string;
+    gameId: string;
+  }>;
 };
 

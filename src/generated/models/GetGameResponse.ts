@@ -28,3 +28,4 @@ export type GetGameResponse = {
     exchangeRate: string | null;
   }>;
 };
+

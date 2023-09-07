@@ -22,10 +22,10 @@ export type GetTransactionsResponse = {
         blockNumber: number;
         blockHash: string;
         transactionIndex: number;
-        removed: boolean;
+        removed?: boolean;
         address: string;
         data: string;
-        topics: string[];
+        topics: Array<string>;
         transactionHash: string;
         logIndex: number;
       }>;
@@ -37,7 +37,7 @@ export type GetTransactionsResponse = {
       contract?: string;
       value?: string;
       functionName?: string;
-      functionArgs?: any[];
+      functionArgs?: Array<any>;
     }>;
   }>;
   pagination: {
@@ -46,3 +46,4 @@ export type GetTransactionsResponse = {
     offset?: number;
   };
 };
+

@@ -3,13 +3,16 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { GetGameResponse } from '../models/GetGameResponse';
+import type { RegenerateGameApiKeysRequestInput } from '../models/RegenerateGameApiKeysRequestInput';
+import type { RegenerateGameApiKeysResponse } from '../models/RegenerateGameApiKeysResponse';
 import type { UpdateGameRequestInput } from '../models/UpdateGameRequestInput';
 import type { UpdateGameResponse } from '../models/UpdateGameResponse';
 
-import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class GameService {
+
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -40,4 +43,22 @@ export class GameService {
       mediaType: 'application/json',
     });
   }
+
+  /**
+   * Regenerate API keys
+   * @param requestBody
+   * @returns RegenerateGameApiKeysResponse Old keys were revoked and new ones were generated successfully
+   * @throws ApiError
+   */
+  public regenerateApiKeys(
+    requestBody: RegenerateGameApiKeysRequestInput,
+  ): CancelablePromise<RegenerateGameApiKeysResponse> {
+    return this.httpRequest.request({
+      method: 'POST',
+      url: '/v1/game/regenerate-api-keys',
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
 }

@@ -33,6 +33,8 @@ export type { GetProfileNativeCurrencyResponse } from './models/GetProfileNative
 export type { GetProfileResponse } from './models/GetProfileResponse';
 export type { GetTransactionResponse } from './models/GetTransactionResponse';
 export type { GetTransactionsResponse } from './models/GetTransactionsResponse';
+export type { RegenerateGameApiKeysRequestInput } from './models/RegenerateGameApiKeysRequestInput';
+export type { RegenerateGameApiKeysResponse } from './models/RegenerateGameApiKeysResponse';
 export { SellAssetRequestInput } from './models/SellAssetRequestInput';
 export type { SellAssetResponse } from './models/SellAssetResponse';
 export type { TransferAssetRequestInput } from './models/TransferAssetRequestInput';

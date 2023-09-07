@@ -4,5 +4,6 @@
 /* eslint-disable */
 
 export type GetGameListedAssetsRequestInput = {
-  contracts?: string[];
+  contracts?: Array<string>;
 };
+

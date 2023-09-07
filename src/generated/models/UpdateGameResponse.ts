@@ -28,3 +28,4 @@ export type UpdateGameResponse = {
     exchangeRate: string | null;
   }>;
 };
+

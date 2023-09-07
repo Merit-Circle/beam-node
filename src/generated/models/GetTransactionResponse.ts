@@ -21,10 +21,10 @@ export type GetTransactionResponse = {
       blockNumber: number;
       blockHash: string;
       transactionIndex: number;
-      removed: boolean;
+      removed?: boolean;
       address: string;
       data: string;
-      topics: string[];
+      topics: Array<string>;
       transactionHash: string;
       logIndex: number;
     }>;
@@ -36,6 +36,7 @@ export type GetTransactionResponse = {
     contract?: string;
     value?: string;
     functionName?: string;
-    functionArgs?: any[];
+    functionArgs?: Array<any>;
   }>;
 };
+
