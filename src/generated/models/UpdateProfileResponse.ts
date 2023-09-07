@@ -17,4 +17,3 @@ export type UpdateProfileResponse = {
     profileId: string;
   }>;
 };
-

@@ -15,4 +15,3 @@ export type RegenerateGameApiKeysResponse = {
     gameId: string;
   }>;
 };
-

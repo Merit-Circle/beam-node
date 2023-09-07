@@ -8,11 +8,10 @@ import type { RegenerateGameApiKeysResponse } from '../models/RegenerateGameApiK
 import type { UpdateGameRequestInput } from '../models/UpdateGameRequestInput';
 import type { UpdateGameResponse } from '../models/UpdateGameResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class GameService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -60,5 +59,4 @@ export class GameService {
       mediaType: 'application/json',
     });
   }
-
 }

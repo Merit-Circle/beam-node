@@ -7,9 +7,8 @@ export type CreateTransactionRequestInput = {
   interactions: Array<{
     contract: string;
     functionName: string;
-    functionArgs: Array<any>;
+    functionArgs: any[];
   }>;
   optimistic: boolean;
   policyId?: string;
 };
-

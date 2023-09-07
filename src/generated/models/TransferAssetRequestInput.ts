@@ -12,4 +12,3 @@ export type TransferAssetRequestInput = {
   sponsor?: boolean;
   policyId?: string;
 };
-

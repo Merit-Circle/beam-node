@@ -4,11 +4,10 @@
 /* eslint-disable */
 import type { GetChainResponse } from '../models/GetChainResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class ChainService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -21,5 +20,4 @@ export class ChainService {
       url: '/v1/chain',
     });
   }
-
 }
