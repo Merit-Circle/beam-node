@@ -89,12 +89,14 @@ export class ProfilesService {
   /**
    * Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
    * @param profileId
+   * @param xApiKey
    * @param requestBody
    * @returns GenerateLinkCodeResponse Challenge to link up an anonymous profile to a user
    * @throws ApiError
    */
   public createConnectionRequest(
     profileId: string,
+    xApiKey: string,
     requestBody: GenerateLinkCodeRequestInput,
   ): CancelablePromise<GenerateLinkCodeResponse> {
     return this.httpRequest.request({
@@ -102,6 +104,9 @@ export class ProfilesService {
       url: '/v1/profiles/{profileId}/create-connection-request',
       path: {
         profileId: profileId,
+      },
+      headers: {
+        'x-api-key': xApiKey,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -111,12 +116,14 @@ export class ProfilesService {
   /**
    * Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
    * @param profileId
+   * @param xApiKey
    * @param requestBody
    * @returns GenerateSignInCodeResponse Challenge to sign in a player to the game
    * @throws ApiError
    */
   public createSignInRequest(
     profileId: string,
+    xApiKey: string,
     requestBody: GenerateSignInCodeRequestInput,
   ): CancelablePromise<GenerateSignInCodeResponse> {
     return this.httpRequest.request({
@@ -124,6 +131,9 @@ export class ProfilesService {
       url: '/v1/profiles/{profileId}/create-sign-in-request',
       path: {
         profileId: profileId,
+      },
+      headers: {
+        'x-api-key': xApiKey,
       },
       body: requestBody,
       mediaType: 'application/json',

@@ -22,7 +22,7 @@ export type GetTransactionsResponse = {
         blockNumber: number;
         blockHash: string;
         transactionIndex: number;
-        removed: boolean;
+        removed?: boolean;
         address: string;
         data: string;
         topics: string[];
