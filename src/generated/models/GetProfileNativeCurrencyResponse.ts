@@ -13,3 +13,4 @@ export type GetProfileNativeCurrencyResponse = {
     balance: string;
   };
 };
+

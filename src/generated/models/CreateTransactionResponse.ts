@@ -24,7 +24,7 @@ export type CreateTransactionResponse = {
       removed?: boolean;
       address: string;
       data: string;
-      topics: string[];
+      topics: Array<string>;
       transactionHash: string;
       logIndex: number;
     }>;
@@ -36,6 +36,7 @@ export type CreateTransactionResponse = {
     contract?: string;
     value?: string;
     functionName?: string;
-    functionArgs?: any[];
+    functionArgs?: Array<any>;
   }>;
 };
+

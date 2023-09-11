@@ -6,3 +6,4 @@
 export type SellAssetResponse = {
   orderId: string;
 };
+

@@ -6,3 +6,4 @@
 export type UpdateProfileRequestInput = {
   newProfileId: string;
 };
+

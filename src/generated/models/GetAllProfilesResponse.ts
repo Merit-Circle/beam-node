@@ -9,6 +9,7 @@ export type GetAllProfilesResponse = {
     gameId: string;
     externalId: string;
     userId: string | null;
+    userConnectionCreatedAt: any;
     wallets: Array<{
       id: string;
       externalId: string;
@@ -24,3 +25,4 @@ export type GetAllProfilesResponse = {
     offset?: number;
   };
 };
+
