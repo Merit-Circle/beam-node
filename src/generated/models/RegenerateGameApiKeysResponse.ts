@@ -8,6 +8,7 @@ export type RegenerateGameApiKeysResponse = {
   name: string;
   description: string | null;
   coverImageUrl: string | null;
+  logoImageUrl: string | null;
   apiKeys: Array<{
     type: 'ReadOnly' | 'ReadAndWrite' | 'Regenerate';
     id: string;

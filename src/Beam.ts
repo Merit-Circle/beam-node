@@ -12,7 +12,7 @@ export class Beam {
 
   constructor(
     private readonly apiKey: string,
-    private readonly basePath?: string,
+    private readonly basePath = 'https://api.testnet.onbeam.com',
   ) {
     this.client = new ApiClient({
       BASE: this.basePath,

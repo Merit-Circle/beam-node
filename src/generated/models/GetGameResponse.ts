@@ -8,6 +8,7 @@ export type GetGameResponse = {
   name: string;
   description: string | null;
   coverImageUrl: string | null;
+  logoImageUrl: string | null;
   contracts: Array<{
     type: 'ERC20' | 'ERC721' | 'ERC1155' | 'SEAPORT';
     id: string;
