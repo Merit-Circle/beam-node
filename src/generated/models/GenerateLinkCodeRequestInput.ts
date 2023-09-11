@@ -6,3 +6,4 @@
 export type GenerateLinkCodeRequestInput = {
   callbackUrl: string;
 };
+

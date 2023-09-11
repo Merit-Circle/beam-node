@@ -8,6 +8,7 @@ export type UpdateProfileResponse = {
   gameId: string;
   externalId: string;
   userId: string | null;
+  userConnectionCreatedAt: any;
   wallets: Array<{
     id: string;
     externalId: string;
@@ -17,3 +18,4 @@ export type UpdateProfileResponse = {
     profileId: string;
   }>;
 };
+

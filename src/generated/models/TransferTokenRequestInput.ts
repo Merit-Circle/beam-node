@@ -11,3 +11,4 @@ export type TransferTokenRequestInput = {
   sponsor?: boolean;
   policyId?: string;
 };
+

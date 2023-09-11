@@ -6,3 +6,4 @@
 export type GenerateLinkCodeResponse = {
   challenge: string;
 };
+
