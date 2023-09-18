@@ -7,11 +7,10 @@ import type { CreateTransactionResponse } from '../models/CreateTransactionRespo
 import type { GetTransactionResponse } from '../models/GetTransactionResponse';
 import type { GetTransactionsResponse } from '../models/GetTransactionsResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class TransactionsService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -29,8 +28,8 @@ export class TransactionsService {
       method: 'GET',
       url: '/v1/transactions',
       query: {
-        'limit': limit,
-        'offset': offset,
+        limit: limit,
+        offset: offset,
       },
     });
   }
@@ -48,13 +47,13 @@ export class TransactionsService {
       method: 'GET',
       url: '/v1/transactions/{transactionId}',
       path: {
-        'transactionId': transactionId,
+        transactionId: transactionId,
       },
     });
   }
 
   /**
-   * Get a paginated list of transactions created on behalf of a prfoile
+   * Get a paginated list of transactions created on behalf of a profile
    * @param profileId
    * @param limit
    * @param offset
@@ -70,11 +69,11 @@ export class TransactionsService {
       method: 'GET',
       url: '/v1/transactions/profiles/{profileId}',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
       query: {
-        'limit': limit,
-        'offset': offset,
+        limit: limit,
+        offset: offset,
       },
     });
   }
@@ -94,11 +93,10 @@ export class TransactionsService {
       method: 'POST',
       url: '/v1/transactions/profiles/{profileId}',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
       body: requestBody,
       mediaType: 'application/json',
     });
   }
-
 }

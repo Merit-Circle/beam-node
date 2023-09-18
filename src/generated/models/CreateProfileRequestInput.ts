@@ -6,4 +6,3 @@
 export type CreateProfileRequestInput = {
   profileId: string;
 };
-

@@ -73,10 +73,28 @@ export type GetAssetResponse = {
     updatedAt?: string | null;
     currency: GetAssetResponse.currency;
   } | null;
+  ownershipByAddresses?: Array<{
+    address: string;
+    quantity: number;
+    user: {
+      _id: string;
+      isCreator: boolean;
+      isRoyaltyOwner?: boolean | null;
+      username?: string | null;
+      profile?: {
+        bio?: string | null;
+        isVerified: boolean;
+        profilePicture?: string | null;
+        profilePictureUrl?: string | null;
+        telegram?: string | null;
+        twitter?: string | null;
+        website?: string | null;
+      } | null;
+    };
+  } | null> | null;
 };
 
 export namespace GetAssetResponse {
-
   export enum network {
     AVALANCHE = 'Avalanche',
     BEAM = 'Beam',
@@ -139,7 +157,4 @@ export namespace GetAssetResponse {
     WMATIC = 'Wmatic',
     WMC = 'Wmc',
   }
-
-
 }
-

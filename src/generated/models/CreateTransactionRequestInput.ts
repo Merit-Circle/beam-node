@@ -7,11 +7,10 @@ export type CreateTransactionRequestInput = {
   interactions: Array<{
     contractAddress: string;
     functionName: string;
-    functionArgs?: Array<any>;
+    functionArgs?: any[];
     value?: string;
   }>;
   optimistic: boolean;
   policyId?: string;
   sponsor?: boolean;
 };
-

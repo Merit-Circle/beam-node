@@ -13,11 +13,10 @@ import type { GetProfileResponse } from '../models/GetProfileResponse';
 import type { UpdateProfileRequestInput } from '../models/UpdateProfileRequestInput';
 import type { UpdateProfileResponse } from '../models/UpdateProfileResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class ProfilesService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -55,14 +54,12 @@ export class ProfilesService {
    * @returns GetProfileResponse
    * @throws ApiError
    */
-  public getProfile(
-    profileId: string,
-  ): CancelablePromise<GetProfileResponse> {
+  public getProfile(profileId: string): CancelablePromise<GetProfileResponse> {
     return this.httpRequest.request({
       method: 'GET',
       url: '/v1/profiles/{profileId}',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
     });
   }
@@ -82,7 +79,7 @@ export class ProfilesService {
       method: 'PATCH',
       url: '/v1/profiles/{profileId}',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -106,7 +103,7 @@ export class ProfilesService {
       method: 'POST',
       url: '/v1/profiles/{profileId}/create-connection-request',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
       headers: {
         'x-api-key': xApiKey,
@@ -133,7 +130,7 @@ export class ProfilesService {
       method: 'POST',
       url: '/v1/profiles/{profileId}/create-sign-in-request',
       path: {
-        'profileId': profileId,
+        profileId: profileId,
       },
       headers: {
         'x-api-key': xApiKey,
@@ -142,5 +139,4 @@ export class ProfilesService {
       mediaType: 'application/json',
     });
   }
-
 }
