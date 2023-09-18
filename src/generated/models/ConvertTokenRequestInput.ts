@@ -3,11 +3,12 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type TransferAssetRequestInput = {
-  receiverProfileId: string;
-  assetAddress: string;
-  assetId: number;
-  amountToTransfer?: number;
+export type ConvertTokenRequestInput = {
+  tokenIn: string;
+  tokenOut: string;
+  amountIn: string;
+  amountOut: string;
+  receiverProfileId?: string;
   optimistic?: boolean;
   sponsor?: boolean;
   policyId?: string;

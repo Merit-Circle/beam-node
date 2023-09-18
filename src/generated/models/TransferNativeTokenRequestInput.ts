@@ -9,4 +9,3 @@ export type TransferNativeTokenRequestInput = {
   optimistic?: boolean;
   sponsor?: boolean;
 };
-

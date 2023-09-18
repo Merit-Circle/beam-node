@@ -10,7 +10,7 @@ export type UpdateGameResponse = {
   coverImageUrl: string | null;
   logoImageUrl: string | null;
   contracts: Array<{
-    type: 'ERC20' | 'ERC721' | 'ERC1155' | 'SEAPORT';
+    type: 'ERC20' | 'ERC721' | 'ERC1155' | 'SEAPORT' | 'UNISWAPV2' | 'WETH';
     id: string;
     externalId: string;
     address: string;
@@ -29,4 +29,3 @@ export type UpdateGameResponse = {
     exchangeRate: string | null;
   }>;
 };
-

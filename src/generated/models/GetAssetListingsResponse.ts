@@ -35,4 +35,3 @@ export type GetAssetListingsResponse = {
     offset?: number;
   };
 };
-

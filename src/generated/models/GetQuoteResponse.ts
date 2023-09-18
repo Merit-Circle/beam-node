@@ -3,6 +3,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type UpdateProfileRequestInput = {
-  newProfileId: string;
+export type GetQuoteResponse = {
+  tokenIn: string;
+  tokenOut: string;
+  amountIn: string;
+  amountOut: string;
 };
