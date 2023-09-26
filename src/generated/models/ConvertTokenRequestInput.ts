@@ -8,7 +8,7 @@ export type ConvertTokenRequestInput = {
   tokenOut: string;
   amountIn: string;
   amountOut: string;
-  receiverProfileId?: string;
+  receiverEntityId?: string;
   optimistic?: boolean;
   sponsor?: boolean;
   policyId?: string;

@@ -5,6 +5,8 @@
 
 export type GetGameResponse = {
   id: string;
+  createdAt: any;
+  updatedAt: any;
   name: string;
   description: string | null;
   coverImageUrl: string | null;
@@ -12,6 +14,8 @@ export type GetGameResponse = {
   contracts: Array<{
     type: 'ERC20' | 'ERC721' | 'ERC1155' | 'SEAPORT' | 'UNISWAPV2' | 'WETH';
     id: string;
+    createdAt: any;
+    updatedAt: any;
     externalId: string;
     address: string;
     name: string | null;
@@ -22,6 +26,9 @@ export type GetGameResponse = {
     model: 'ContractFunctions' | 'AccountFunctions';
     type: 'PayForUser' | 'ChargeCustomToken';
     id: string;
+    createdAt: any;
+    updatedAt: any;
+    externalId: string;
     name: string;
     chainId: number;
     gameId: string;

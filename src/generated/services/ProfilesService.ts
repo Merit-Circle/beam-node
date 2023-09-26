@@ -38,48 +38,57 @@ export class ProfilesService {
 
   /**
    * Getting all profiles
+   * @param limit
+   * @param offset
    * @returns GetAllProfilesResponse
    * @throws ApiError
    */
-  public getAllProfiles(): CancelablePromise<GetAllProfilesResponse> {
+  public getAllProfiles(
+    limit?: number,
+    offset?: number,
+  ): CancelablePromise<GetAllProfilesResponse> {
     return this.httpRequest.request({
       method: 'GET',
       url: '/v1/profiles',
+      query: {
+        limit: limit,
+        offset: offset,
+      },
     });
   }
 
   /**
    * Getting information on a profile
-   * @param profileId
+   * @param entityId
    * @returns GetProfileResponse
    * @throws ApiError
    */
-  public getProfile(profileId: string): CancelablePromise<GetProfileResponse> {
+  public getProfile(entityId: string): CancelablePromise<GetProfileResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/profiles/{profileId}',
+      url: '/v1/profiles/{entityId}',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
     });
   }
 
   /**
    * Update a profile
-   * @param profileId
+   * @param entityId
    * @param requestBody
    * @returns UpdateProfileResponse
    * @throws ApiError
    */
   public updateProfile(
-    profileId: string,
+    entityId: string,
     requestBody: UpdateProfileRequestInput,
   ): CancelablePromise<UpdateProfileResponse> {
     return this.httpRequest.request({
       method: 'PATCH',
-      url: '/v1/profiles/{profileId}',
+      url: '/v1/profiles/{entityId}',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -88,22 +97,22 @@ export class ProfilesService {
 
   /**
    * Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
-   * @param profileId
+   * @param entityId
    * @param xApiKey
    * @param requestBody
    * @returns GenerateLinkCodeResponse Challenge to link up an anonymous profile to a user
    * @throws ApiError
    */
   public createConnectionRequest(
-    profileId: string,
+    entityId: string,
     xApiKey: string,
     requestBody: GenerateLinkCodeRequestInput,
   ): CancelablePromise<GenerateLinkCodeResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/profiles/{profileId}/create-connection-request',
+      url: '/v1/profiles/{entityId}/create-connection-request',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       headers: {
         'x-api-key': xApiKey,
@@ -115,22 +124,22 @@ export class ProfilesService {
 
   /**
    * Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
-   * @param profileId
+   * @param entityId
    * @param xApiKey
    * @param requestBody
    * @returns GenerateSignInCodeResponse Challenge to sign in a player to the game
    * @throws ApiError
    */
   public createSignInRequest(
-    profileId: string,
+    entityId: string,
     xApiKey: string,
     requestBody: GenerateSignInCodeRequestInput,
   ): CancelablePromise<GenerateSignInCodeResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/profiles/{profileId}/create-sign-in-request',
+      url: '/v1/profiles/{entityId}/create-sign-in-request',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       headers: {
         'x-api-key': xApiKey,

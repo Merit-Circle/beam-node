@@ -4,5 +4,5 @@
 /* eslint-disable */
 
 export type UpdateProfileRequestInput = {
-  newProfileId: string;
+  newEntityId: string;
 };

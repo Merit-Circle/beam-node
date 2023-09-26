@@ -5,7 +5,7 @@
 
 export type GetAssetsResponse = {
   data: Array<{
-    id: string;
+    marketplaceId: string;
     name: string;
     imageUrl: string | null;
     assetType: string;

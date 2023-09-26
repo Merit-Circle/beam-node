@@ -6,6 +6,7 @@ import type { BuyAssetRequestInput } from '../models/BuyAssetRequestInput';
 import type { BuyAssetResponse } from '../models/BuyAssetResponse';
 import type { CancelAssetListingRequestInput } from '../models/CancelAssetListingRequestInput';
 import type { GetAssetListingsResponse } from '../models/GetAssetListingsResponse';
+import type { GetChainCurrenciesResponse } from '../models/GetChainCurrenciesResponse';
 import type { SellAssetRequestInput } from '../models/SellAssetRequestInput';
 import type { SellAssetResponse } from '../models/SellAssetResponse';
 
@@ -43,22 +44,22 @@ export class MarketplaceService {
 
   /**
    * Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
-   * @param profileId
+   * @param entityId
    * @param limit
    * @param offset
    * @returns GetAssetListingsResponse
    * @throws ApiError
    */
   public getListedAssetsForProfile(
-    profileId: string,
+    entityId: string,
     limit?: number,
     offset?: number,
   ): CancelablePromise<GetAssetListingsResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/marketplace/profiles/{profileId}',
+      url: '/v1/marketplace/profiles/{entityId}',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       query: {
         limit: limit,
@@ -69,20 +70,20 @@ export class MarketplaceService {
 
   /**
    * List an asset for sale
-   * @param profileId
+   * @param entityId
    * @param requestBody
    * @returns SellAssetResponse
    * @throws ApiError
    */
   public listAsset(
-    profileId: string,
+    entityId: string,
     requestBody: SellAssetRequestInput,
   ): CancelablePromise<SellAssetResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/marketplace/profiles/{profileId}/listing',
+      url: '/v1/marketplace/profiles/{entityId}/listing',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -91,22 +92,22 @@ export class MarketplaceService {
 
   /**
    * Buy listed asset
-   * @param profileId
+   * @param entityId
    * @param orderId
    * @param requestBody
    * @returns BuyAssetResponse
    * @throws ApiError
    */
   public buyListedAsset(
-    profileId: string,
+    entityId: string,
     orderId: string,
     requestBody: BuyAssetRequestInput,
   ): CancelablePromise<BuyAssetResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/marketplace/profiles/{profileId}/listing/{orderId}',
+      url: '/v1/marketplace/profiles/{entityId}/listing/{orderId}',
       path: {
-        profileId: profileId,
+        entityId: entityId,
         orderId: orderId,
       },
       body: requestBody,
@@ -116,26 +117,43 @@ export class MarketplaceService {
 
   /**
    * Cancel asset listing
-   * @param profileId
+   * @param entityId
    * @param orderId
    * @param requestBody
    * @returns BuyAssetResponse
    * @throws ApiError
    */
   public cancelListing(
-    profileId: string,
+    entityId: string,
     orderId: string,
     requestBody: CancelAssetListingRequestInput,
   ): CancelablePromise<BuyAssetResponse> {
     return this.httpRequest.request({
       method: 'DELETE',
-      url: '/v1/marketplace/profiles/{profileId}/listing/{orderId}',
+      url: '/v1/marketplace/profiles/{entityId}/listing/{orderId}',
       path: {
-        profileId: profileId,
+        entityId: entityId,
         orderId: orderId,
       },
       body: requestBody,
       mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * @param chainId
+   * @returns GetChainCurrenciesResponse
+   * @throws ApiError
+   */
+  public getChainCurrencies(
+    chainId: number,
+  ): CancelablePromise<GetChainCurrenciesResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/marketplace/chain-currencies/{chainId}',
+      path: {
+        chainId: chainId,
+      },
     });
   }
 }

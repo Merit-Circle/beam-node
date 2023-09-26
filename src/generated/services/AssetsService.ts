@@ -20,22 +20,22 @@ export class AssetsService {
 
   /**
    * Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
-   * @param profileId
+   * @param entityId
    * @param limit
    * @param offset
    * @returns GetAssetsResponse
    * @throws ApiError
    */
   public getProfileAssets(
-    profileId: string,
+    entityId: string,
     limit?: number,
     offset?: number,
   ): CancelablePromise<GetAssetsResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/assets/profiles/{profileId}',
+      url: '/v1/assets/profiles/{entityId}',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       query: {
         limit: limit,
@@ -46,56 +46,56 @@ export class AssetsService {
 
   /**
    * Get all the currencies owned by an account (ERC20)
-   * @param profileId
+   * @param entityId
    * @returns GetProfileCurrenciesResponse
    * @throws ApiError
    */
   public getProfileCurrencies(
-    profileId: string,
+    entityId: string,
   ): CancelablePromise<GetProfileCurrenciesResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/assets/profiles/{profileId}/currencies',
+      url: '/v1/assets/profiles/{entityId}/currencies',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
     });
   }
 
   /**
    * Get the native token balance
-   * @param profileId
+   * @param entityId
    * @returns GetProfileNativeCurrencyResponse
    * @throws ApiError
    */
   public getProfileNativeCurrency(
-    profileId: string,
+    entityId: string,
   ): CancelablePromise<GetProfileNativeCurrencyResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/assets/profiles/{profileId}/native',
+      url: '/v1/assets/profiles/{entityId}/native',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
     });
   }
 
   /**
    * Transfer an asset (NFT assets, ERC721 / ERC1155)
-   * @param profileId
+   * @param entityId
    * @param requestBody
    * @returns TransferAssetResponse
    * @throws ApiError
    */
   public transferAsset(
-    profileId: string,
+    entityId: string,
     requestBody: TransferAssetRequestInput,
   ): CancelablePromise<TransferAssetResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/assets/profiles/{profileId}/transfer-asset',
+      url: '/v1/assets/profiles/{entityId}/transfer-asset',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -104,20 +104,20 @@ export class AssetsService {
 
   /**
    * Transfer a token (token assets, ERC20)
-   * @param profileId
+   * @param entityId
    * @param requestBody
    * @returns TransferTokenResponse
    * @throws ApiError
    */
   public transferToken(
-    profileId: string,
+    entityId: string,
     requestBody: TransferTokenRequestInput,
   ): CancelablePromise<TransferTokenResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/assets/profiles/{profileId}/transfer-token',
+      url: '/v1/assets/profiles/{entityId}/transfer-token',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -126,20 +126,20 @@ export class AssetsService {
 
   /**
    * Transfer the native token (MC)
-   * @param profileId
+   * @param entityId
    * @param requestBody
    * @returns TransferTokenResponse
    * @throws ApiError
    */
   public transferNativeToken(
-    profileId: string,
+    entityId: string,
     requestBody: TransferNativeTokenRequestInput,
   ): CancelablePromise<TransferTokenResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/assets/profiles/{profileId}/transfer-native',
+      url: '/v1/assets/profiles/{entityId}/transfer-native',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -176,14 +176,14 @@ export class AssetsService {
    * Get a single NFT (e.g. ERC721 / ERC1155)
    * @param assetAddress
    * @param assetId
-   * @param profileId
+   * @param entityId
    * @returns GetAssetResponse
    * @throws ApiError
    */
   public getAsset(
     assetAddress: string,
     assetId: string,
-    profileId?: string,
+    entityId?: string,
   ): CancelablePromise<GetAssetResponse> {
     return this.httpRequest.request({
       method: 'GET',
@@ -193,7 +193,7 @@ export class AssetsService {
         assetId: assetId,
       },
       query: {
-        profileId: profileId,
+        entityId: entityId,
       },
     });
   }

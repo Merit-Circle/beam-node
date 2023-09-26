@@ -5,7 +5,7 @@
 
 export type GetAssetListingsResponse = {
   data: Array<{
-    id: string;
+    marketplaceId: string;
     price: string | null;
     sellType: string;
     startPrice: string | null;
@@ -21,7 +21,7 @@ export type GetAssetListingsResponse = {
     sellerAddress: string;
     contractId: string;
     nft: {
-      id: string;
+      marketplaceId: string;
       name: string;
       imageUrl: string | null;
       assetType: string;

@@ -4,8 +4,10 @@
 /* eslint-disable */
 
 export type TransferNativeTokenRequestInput = {
-  receiverProfileId: string;
+  receiverEntityId?: string;
+  receiverWalletAddress?: string;
   amountToTransfer: string;
   optimistic?: boolean;
   sponsor?: boolean;
+  policyId?: string;
 };

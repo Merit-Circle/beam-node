@@ -54,22 +54,22 @@ export class TransactionsService {
 
   /**
    * Get a paginated list of transactions created on behalf of a profile
-   * @param profileId
+   * @param entityId
    * @param limit
    * @param offset
    * @returns GetTransactionsResponse
    * @throws ApiError
    */
   public getProfileTransactions(
-    profileId: string,
+    entityId: string,
     limit?: number,
     offset?: number,
   ): CancelablePromise<GetTransactionsResponse> {
     return this.httpRequest.request({
       method: 'GET',
-      url: '/v1/transactions/profiles/{profileId}',
+      url: '/v1/transactions/profiles/{entityId}',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       query: {
         limit: limit,
@@ -80,20 +80,20 @@ export class TransactionsService {
 
   /**
    * Creating a new transaction on behalf of a profile
-   * @param profileId
+   * @param entityId
    * @param requestBody
    * @returns CreateTransactionResponse
    * @throws ApiError
    */
   public createProfileTransaction(
-    profileId: string,
+    entityId: string,
     requestBody: CreateTransactionRequestInput,
   ): CancelablePromise<CreateTransactionResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/transactions/profiles/{profileId}',
+      url: '/v1/transactions/profiles/{entityId}',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',

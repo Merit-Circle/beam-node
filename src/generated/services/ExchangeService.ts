@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { ConvertTokenRequestInput } from '../models/ConvertTokenRequestInput';
-import type { ConvertTokenRespone } from '../models/ConvertTokenRespone';
+import type { ConvertTokenResponse } from '../models/ConvertTokenResponse';
 import type { GetQuoteResponse } from '../models/GetQuoteResponse';
 
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
@@ -62,20 +62,20 @@ export class ExchangeService {
 
   /**
    * Trade an exact amount of `tokenIn` for a minimum amount of `tokenOut`
-   * @param profileId
+   * @param entityId
    * @param requestBody
-   * @returns ConvertTokenRespone
+   * @returns ConvertTokenResponse
    * @throws ApiError
    */
   public convertInput(
-    profileId: string,
+    entityId: string,
     requestBody: ConvertTokenRequestInput,
-  ): CancelablePromise<ConvertTokenRespone> {
+  ): CancelablePromise<ConvertTokenResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/exchange/profiles/{profileId}/convert/input',
+      url: '/v1/exchange/profiles/{entityId}/convert/input',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -84,20 +84,20 @@ export class ExchangeService {
 
   /**
    * Swap a maximum amount of `tokenIn` for an exact amount of `tokenOut`
-   * @param profileId
+   * @param entityId
    * @param requestBody
-   * @returns ConvertTokenRespone
+   * @returns ConvertTokenResponse
    * @throws ApiError
    */
   public convertToOutput(
-    profileId: string,
+    entityId: string,
     requestBody: ConvertTokenRequestInput,
-  ): CancelablePromise<ConvertTokenRespone> {
+  ): CancelablePromise<ConvertTokenResponse> {
     return this.httpRequest.request({
       method: 'POST',
-      url: '/v1/exchange/profiles/{profileId}/convert/output',
+      url: '/v1/exchange/profiles/{entityId}/convert/output',
       path: {
-        profileId: profileId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',

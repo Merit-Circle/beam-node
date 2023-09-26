@@ -4,10 +4,13 @@
 /* eslint-disable */
 
 export type TransferAssetRequestInput = {
-  receiverProfileId: string;
-  assetAddress: string;
-  assetId: number;
-  amountToTransfer?: number;
+  assets: Array<{
+    receiverEntityId?: string;
+    receiverWalletAddress?: string;
+    assetAddress: string;
+    assetId: number;
+    amountToTransfer?: number;
+  }>;
   optimistic?: boolean;
   sponsor?: boolean;
   policyId?: string;

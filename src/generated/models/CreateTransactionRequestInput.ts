@@ -10,7 +10,7 @@ export type CreateTransactionRequestInput = {
     functionArgs?: any[];
     value?: string;
   }>;
-  optimistic: boolean;
-  policyId?: string;
+  optimistic?: boolean;
   sponsor?: boolean;
+  policyId?: string;
 };

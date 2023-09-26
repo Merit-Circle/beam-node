@@ -6,12 +6,17 @@
 export type GetAllProfilesResponse = {
   data: Array<{
     id: string;
-    gameId: string;
+    createdAt: any;
+    updatedAt: any;
     externalId: string;
+    externalEntityId: string;
+    gameId: string;
     userId: string | null;
     userConnectionCreatedAt: any;
     wallets: Array<{
       id: string;
+      createdAt: any;
+      updatedAt: any;
       externalId: string;
       address: string;
       chainId: number;

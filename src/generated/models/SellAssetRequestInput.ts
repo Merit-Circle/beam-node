@@ -4,12 +4,13 @@
 /* eslint-disable */
 
 export type SellAssetRequestInput = {
-  marketplaceAssetId: string;
+  marketplaceId: string;
   quantity: number;
   price: string;
-  startTime: string;
-  endTime: string;
+  startTime?: string;
+  endTime?: string;
   sellType: SellAssetRequestInput.sellType;
+  priceTokenAddress: string;
   sponsor?: boolean;
   policyId?: string;
 };

@@ -3,14 +3,14 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type ConvertTokenRespone = {
-  status: ConvertTokenRespone.status;
-  type: ConvertTokenRespone.type;
+export type ConvertTokenResponse = {
+  status: ConvertTokenResponse.status;
+  type: ConvertTokenResponse.type;
   transactionHash?: string;
   explorerUrl?: string;
 };
 
-export namespace ConvertTokenRespone {
+export namespace ConvertTokenResponse {
   export enum status {
     PENDING = 'pending',
     SUCCESS = 'success',

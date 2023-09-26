@@ -4,7 +4,8 @@
 /* eslint-disable */
 
 export type TransferTokenRequestInput = {
-  receiverProfileId: string;
+  receiverEntityId?: string;
+  receiverWalletAddress?: string;
   assetAddress: string;
   amountToTransfer: string;
   optimistic?: boolean;

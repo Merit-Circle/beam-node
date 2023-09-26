@@ -8,7 +8,7 @@ export type { BuyAssetRequestInput } from './generated/models/BuyAssetRequestInp
 export type { BuyAssetResponse } from './generated/models/BuyAssetResponse';
 export type { CancelAssetListingRequestInput } from './generated/models/CancelAssetListingRequestInput';
 export type { ConvertTokenRequestInput } from './generated/models/ConvertTokenRequestInput';
-export { ConvertTokenRespone } from './generated/models/ConvertTokenRespone';
+export { ConvertTokenResponse } from './generated/models/ConvertTokenResponse';
 export type { CreateProfileRequestInput } from './generated/models/CreateProfileRequestInput';
 export type { CreateProfileResponse } from './generated/models/CreateProfileResponse';
 export type { CreateTransactionRequestInput } from './generated/models/CreateTransactionRequestInput';
@@ -21,6 +21,7 @@ export type { GetAllProfilesResponse } from './generated/models/GetAllProfilesRe
 export type { GetAssetListingsResponse } from './generated/models/GetAssetListingsResponse';
 export { GetAssetResponse } from './generated/models/GetAssetResponse';
 export type { GetAssetsResponse } from './generated/models/GetAssetsResponse';
+export type { GetChainCurrenciesResponse } from './generated/models/GetChainCurrenciesResponse';
 export type { GetChainResponse } from './generated/models/GetChainResponse';
 export type { GetGameResponse } from './generated/models/GetGameResponse';
 export type { GetProfileCurrenciesResponse } from './generated/models/GetProfileCurrenciesResponse';
