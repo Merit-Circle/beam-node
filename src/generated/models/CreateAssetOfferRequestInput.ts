@@ -3,26 +3,16 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type SellAssetRequestInput = {
+export type CreateAssetOfferRequestInput = {
   marketplaceId: string;
   quantity: number;
   price: string;
   startTime?: string;
   endTime?: string;
-  sellType: SellAssetRequestInput.sellType;
-  currency?: SellAssetRequestInput.currency;
-  sponsor?: boolean;
-  policyId?: string;
+  currency?: CreateAssetOfferRequestInput.currency;
 };
 
-export namespace SellAssetRequestInput {
-
-  export enum sellType {
-    FIXED_PRICE = 'FixedPrice',
-    DESCENDING_AUCTION = 'DescendingAuction',
-    ASCENDING_AUCTION = 'AscendingAuction',
-    NOT_FOR_SALE = 'NotForSale',
-  }
+export namespace CreateAssetOfferRequestInput {
 
   export enum currency {
     AVAX = 'Avax',

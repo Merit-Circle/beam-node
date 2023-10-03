@@ -2,18 +2,26 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AcceptAssetOfferRequestInput } from '../models/AcceptAssetOfferRequestInput';
+import type { AcceptOfferResponse } from '../models/AcceptOfferResponse';
 import type { BuyAssetRequestInput } from '../models/BuyAssetRequestInput';
 import type { BuyAssetResponse } from '../models/BuyAssetResponse';
 import type { CancelAssetListingRequestInput } from '../models/CancelAssetListingRequestInput';
+import type { CancelAssetOfferRequestInput } from '../models/CancelAssetOfferRequestInput';
+import type { CancelOfferResponse } from '../models/CancelOfferResponse';
+import type { CreateAssetOfferRequestInput } from '../models/CreateAssetOfferRequestInput';
+import type { CreateOfferResponse } from '../models/CreateOfferResponse';
 import type { GetAssetListingsResponse } from '../models/GetAssetListingsResponse';
+import type { GetAssetOffersResponse } from '../models/GetAssetOffersResponse';
 import type { GetChainCurrenciesResponse } from '../models/GetChainCurrenciesResponse';
 import type { SellAssetRequestInput } from '../models/SellAssetRequestInput';
 import type { SellAssetResponse } from '../models/SellAssetResponse';
 
-import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class MarketplaceService {
+
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -33,11 +41,11 @@ export class MarketplaceService {
       method: 'GET',
       url: '/v1/marketplace',
       path: {
-        gameId: gameId,
+        'gameId': gameId,
       },
       query: {
-        limit: limit,
-        offset: offset,
+        'limit': limit,
+        'offset': offset,
       },
     });
   }
@@ -59,11 +67,11 @@ export class MarketplaceService {
       method: 'GET',
       url: '/v1/marketplace/profiles/{entityId}',
       path: {
-        entityId: entityId,
+        'entityId': entityId,
       },
       query: {
-        limit: limit,
-        offset: offset,
+        'limit': limit,
+        'offset': offset,
       },
     });
   }
@@ -83,7 +91,7 @@ export class MarketplaceService {
       method: 'POST',
       url: '/v1/marketplace/profiles/{entityId}/listing',
       path: {
-        entityId: entityId,
+        'entityId': entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -107,8 +115,8 @@ export class MarketplaceService {
       method: 'POST',
       url: '/v1/marketplace/profiles/{entityId}/listing/{orderId}',
       path: {
-        entityId: entityId,
-        orderId: orderId,
+        'entityId': entityId,
+        'orderId': orderId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -132,11 +140,140 @@ export class MarketplaceService {
       method: 'DELETE',
       url: '/v1/marketplace/profiles/{entityId}/listing/{orderId}',
       path: {
-        entityId: entityId,
-        orderId: orderId,
+        'entityId': entityId,
+        'orderId': orderId,
       },
       body: requestBody,
       mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * Make an offer for an asset
+   * @param entityId
+   * @param requestBody
+   * @returns CreateOfferResponse
+   * @throws ApiError
+   */
+  public createAssetOffer(
+    entityId: string,
+    requestBody: CreateAssetOfferRequestInput,
+  ): CancelablePromise<CreateOfferResponse> {
+    return this.httpRequest.request({
+      method: 'POST',
+      url: '/v1/marketplace/profiles/{entityId}/offers',
+      path: {
+        'entityId': entityId,
+      },
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * Get all offers that player created
+   * @param entityId
+   * @returns GetAssetOffersResponse
+   * @throws ApiError
+   */
+  public getPlayerOffers(
+    entityId: string,
+  ): CancelablePromise<GetAssetOffersResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/marketplace/profiles/{entityId}/offers',
+      path: {
+        'entityId': entityId,
+      },
+    });
+  }
+
+  /**
+   * Get all asset offers that player created
+   * @param entityId
+   * @param marketplaceId
+   * @returns GetAssetOffersResponse
+   * @throws ApiError
+   */
+  public getPlayerAssetOffers(
+    entityId: string,
+    marketplaceId: string,
+  ): CancelablePromise<GetAssetOffersResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/marketplace/profiles/{entityId}/offers/asset/{marketplaceId}',
+      path: {
+        'entityId': entityId,
+        'marketplaceId': marketplaceId,
+      },
+    });
+  }
+
+  /**
+   * Accept an offer for an asset
+   * @param entityId
+   * @param offerId
+   * @param requestBody
+   * @returns AcceptOfferResponse
+   * @throws ApiError
+   */
+  public acceptAssetOffer(
+    entityId: string,
+    offerId: string,
+    requestBody: AcceptAssetOfferRequestInput,
+  ): CancelablePromise<AcceptOfferResponse> {
+    return this.httpRequest.request({
+      method: 'POST',
+      url: '/v1/marketplace/profiles/{entityId}/offers/{offerId}/accept',
+      path: {
+        'entityId': entityId,
+        'offerId': offerId,
+      },
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * Cancel an offer for an asset
+   * @param entityId
+   * @param offerId
+   * @param requestBody
+   * @returns CancelOfferResponse
+   * @throws ApiError
+   */
+  public cancelAssetOffer(
+    entityId: string,
+    offerId: string,
+    requestBody: CancelAssetOfferRequestInput,
+  ): CancelablePromise<CancelOfferResponse> {
+    return this.httpRequest.request({
+      method: 'DELETE',
+      url: '/v1/marketplace/profiles/{entityId}/offers/{offerId}',
+      path: {
+        'entityId': entityId,
+        'offerId': offerId,
+      },
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * Get all offers for an asset
+   * @param marketplaceId
+   * @returns GetAssetOffersResponse
+   * @throws ApiError
+   */
+  public getAssetOffers(
+    marketplaceId: string,
+  ): CancelablePromise<GetAssetOffersResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/marketplace/offers/asset/{marketplaceId}',
+      path: {
+        'marketplaceId': marketplaceId,
+      },
     });
   }
 
@@ -152,8 +289,9 @@ export class MarketplaceService {
       method: 'GET',
       url: '/v1/marketplace/chain-currencies/{chainId}',
       path: {
-        chainId: chainId,
+        'chainId': chainId,
       },
     });
   }
+
 }

@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type BuyAssetResponse = {
+export type AcceptOfferResponse = {
   success: boolean;
   transactionHash?: string;
   explorerUrl?: string;

@@ -3,9 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type BuyAssetResponse = {
-  success: boolean;
-  transactionHash?: string;
-  explorerUrl?: string;
+export type GetEstimateResponse = {
+  estimatedGas: string;
 };
 

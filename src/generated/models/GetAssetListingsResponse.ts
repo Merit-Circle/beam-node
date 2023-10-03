@@ -16,7 +16,7 @@ export type GetAssetListingsResponse = {
     startTime: string | null;
     endTime: string | null;
     quantityListed: number;
-    signedOrderId: string;
+    orderId: string;
     expiresAt: string;
     sellerAddress: string;
     contractId: string;
@@ -35,3 +35,4 @@ export type GetAssetListingsResponse = {
     offset?: number;
   };
 };
+

@@ -12,6 +12,7 @@ export type TransferTokenResponse = {
 };
 
 export namespace TransferTokenResponse {
+
   export enum status {
     PENDING = 'pending',
     SUCCESS = 'success',
@@ -21,4 +22,7 @@ export namespace TransferTokenResponse {
     CUSTODIAL = 'custodial',
     SELF_CUSTODIAL = 'self-custodial',
   }
+
+
 }
+

@@ -57,7 +57,6 @@ export type GetAssetResponse = {
     _id: string;
     nftId: string;
     contractId: string;
-    signedOrderId: string;
     userId: string;
     sellType: GetAssetResponse.sellType;
     quantity: number;
@@ -72,6 +71,7 @@ export type GetAssetResponse = {
     createdAt?: string | null;
     updatedAt?: string | null;
     currency: GetAssetResponse.currency;
+    orderId?: string;
   } | null;
   ownershipByAddresses?: Array<{
     address: string;
@@ -95,6 +95,7 @@ export type GetAssetResponse = {
 };
 
 export namespace GetAssetResponse {
+
   export enum network {
     AVALANCHE = 'Avalanche',
     BEAM = 'Beam',
@@ -160,4 +161,7 @@ export namespace GetAssetResponse {
     WMATIC = 'Wmatic',
     WMC = 'Wmc',
   }
+
+
 }
+

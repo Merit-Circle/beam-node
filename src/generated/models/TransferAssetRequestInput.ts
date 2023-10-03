@@ -8,10 +8,11 @@ export type TransferAssetRequestInput = {
     receiverEntityId?: string;
     receiverWalletAddress?: string;
     assetAddress: string;
-    assetId: number;
+    assetId: string;
     amountToTransfer?: number;
   }>;
   optimistic?: boolean;
   sponsor?: boolean;
   policyId?: string;
 };
+

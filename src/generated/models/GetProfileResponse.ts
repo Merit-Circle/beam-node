@@ -23,3 +23,4 @@ export type GetProfileResponse = {
     profileId: string;
   }>;
 };
+

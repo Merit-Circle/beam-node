@@ -12,10 +12,11 @@ import type { TransferNativeTokenRequestInput } from '../models/TransferNativeTo
 import type { TransferTokenRequestInput } from '../models/TransferTokenRequestInput';
 import type { TransferTokenResponse } from '../models/TransferTokenResponse';
 
-import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class AssetsService {
+
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -35,11 +36,11 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/profiles/{entityId}',
       path: {
-        entityId: entityId,
+        'entityId': entityId,
       },
       query: {
-        limit: limit,
-        offset: offset,
+        'limit': limit,
+        'offset': offset,
       },
     });
   }
@@ -57,7 +58,7 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/profiles/{entityId}/currencies',
       path: {
-        entityId: entityId,
+        'entityId': entityId,
       },
     });
   }
@@ -75,7 +76,7 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/profiles/{entityId}/native',
       path: {
-        entityId: entityId,
+        'entityId': entityId,
       },
     });
   }
@@ -95,7 +96,7 @@ export class AssetsService {
       method: 'POST',
       url: '/v1/assets/profiles/{entityId}/transfer-asset',
       path: {
-        entityId: entityId,
+        'entityId': entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -117,7 +118,7 @@ export class AssetsService {
       method: 'POST',
       url: '/v1/assets/profiles/{entityId}/transfer-token',
       path: {
-        entityId: entityId,
+        'entityId': entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -139,7 +140,7 @@ export class AssetsService {
       method: 'POST',
       url: '/v1/assets/profiles/{entityId}/transfer-native',
       path: {
-        entityId: entityId,
+        'entityId': entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -163,11 +164,11 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/{assetAddress}',
       path: {
-        assetAddress: assetAddress,
+        'assetAddress': assetAddress,
       },
       query: {
-        limit: limit,
-        offset: offset,
+        'limit': limit,
+        'offset': offset,
       },
     });
   }
@@ -189,12 +190,13 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/{assetAddress}/{assetId}',
       path: {
-        assetAddress: assetAddress,
-        assetId: assetId,
+        'assetAddress': assetAddress,
+        'assetId': assetId,
       },
       query: {
-        entityId: entityId,
+        'entityId': entityId,
       },
     });
   }
+
 }

@@ -3,11 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type TransferTokenRequestInput = {
-  receiverEntityId?: string;
-  receiverWalletAddress?: string;
-  assetAddress: string;
-  amountToTransfer: string;
+export type CancelAssetOfferRequestInput = {
   optimistic?: boolean;
   sponsor?: boolean;
   policyId?: string;

@@ -9,3 +9,4 @@ export type BuyAssetRequestInput = {
   sponsor?: boolean;
   policyId?: string;
 };
+

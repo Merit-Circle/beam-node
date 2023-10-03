@@ -7,10 +7,11 @@ import type { CreateTransactionResponse } from '../models/CreateTransactionRespo
 import type { GetTransactionResponse } from '../models/GetTransactionResponse';
 import type { GetTransactionsResponse } from '../models/GetTransactionsResponse';
 
-import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class TransactionsService {
+
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
@@ -28,8 +29,8 @@ export class TransactionsService {
       method: 'GET',
       url: '/v1/transactions',
       query: {
-        limit: limit,
-        offset: offset,
+        'limit': limit,
+        'offset': offset,
       },
     });
   }
@@ -47,7 +48,7 @@ export class TransactionsService {
       method: 'GET',
       url: '/v1/transactions/{transactionId}',
       path: {
-        transactionId: transactionId,
+        'transactionId': transactionId,
       },
     });
   }
@@ -69,11 +70,11 @@ export class TransactionsService {
       method: 'GET',
       url: '/v1/transactions/profiles/{entityId}',
       path: {
-        entityId: entityId,
+        'entityId': entityId,
       },
       query: {
-        limit: limit,
-        offset: offset,
+        'limit': limit,
+        'offset': offset,
       },
     });
   }
@@ -93,10 +94,11 @@ export class TransactionsService {
       method: 'POST',
       url: '/v1/transactions/profiles/{entityId}',
       path: {
-        entityId: entityId,
+        'entityId': entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
     });
   }
+
 }

@@ -3,19 +3,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type GetChainCurrenciesResponse = Array<{
-  __typename?: 'CurrencyQueryResult';
-  decimals: number;
-  symbol:
-    | 'Avax'
-    | 'Eth'
-    | 'Matic'
-    | 'Mc'
-    | 'Usdc'
-    | 'Usdt'
-    | 'Wavax'
-    | 'Weth'
-    | 'Wmatic'
-    | 'Wmc';
-  tokenAddress: string;
-}>;
+export type GetChainCurrenciesResponse = {
+  data: Array<{
+    decimals: number;
+    currency: 'Avax' | 'Eth' | 'Matic' | 'Mc' | 'Usdc' | 'Usdt' | 'Wavax' | 'Weth' | 'Wmatic' | 'Wmc';
+    tokenAddress: string;
+  }>;
+};
+
