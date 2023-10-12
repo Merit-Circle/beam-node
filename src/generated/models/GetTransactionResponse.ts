@@ -14,6 +14,7 @@ export type GetTransactionResponse = {
     createdAt: number;
     blockNumber?: number;
     transactionHash?: string;
+    userOpHash?: string;
     l1GasUsed?: string;
     gasUsed?: number;
     status?: number;
@@ -24,7 +25,7 @@ export type GetTransactionResponse = {
       removed: boolean;
       address: string;
       data: string;
-      topics: Array<string>;
+      topics: string[];
       transactionHash: string;
       logIndex: number;
       orphaned?: boolean;
@@ -37,7 +38,6 @@ export type GetTransactionResponse = {
     contract?: string;
     value?: string;
     functionName?: string;
-    functionArgs?: Array<any>;
+    functionArgs?: any[];
   }>;
 };
-

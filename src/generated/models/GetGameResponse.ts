@@ -20,7 +20,7 @@ export type GetGameResponse = {
     address: string;
     name: string | null;
     chainId: number;
-    gameId: string;
+    gameId: string | null;
   }>;
   policies: Array<{
     model: 'ContractFunctions' | 'AccountFunctions';
@@ -36,4 +36,3 @@ export type GetGameResponse = {
     exchangeRate: string | null;
   }>;
 };
-

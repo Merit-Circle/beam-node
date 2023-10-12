@@ -13,4 +13,3 @@ export type ConvertTokenRequestInput = {
   sponsor?: boolean;
   policyId?: string;
 };
-

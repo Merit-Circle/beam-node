@@ -12,16 +12,17 @@ import type { TransferNativeTokenRequestInput } from '../models/TransferNativeTo
 import type { TransferTokenRequestInput } from '../models/TransferTokenRequestInput';
 import type { TransferTokenResponse } from '../models/TransferTokenResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class AssetsService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
    * Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
    * @param entityId
+   * @param filter
+   * @param sort
    * @param limit
    * @param offset
    * @returns GetAssetsResponse
@@ -29,6 +30,24 @@ export class AssetsService {
    */
   public getProfileAssets(
     entityId: string,
+    filter?: {
+      attributes?: Array<{
+        type?: string | null;
+        value?: string | null;
+      }> | null;
+      sellTypes?: Array<
+        'AscendingAuction' | 'DescendingAuction' | 'FixedPrice' | 'NotForSale'
+      > | null;
+    },
+    sort?: {
+      rarityScore?: 'ASC' | 'DESC' | null;
+      start?: 'ASC' | 'DESC' | null;
+      end?: 'ASC' | 'DESC' | null;
+      createdAt?: 'ASC' | 'DESC' | null;
+      fixedPriceNumber?: 'ASC' | 'DESC' | null;
+      startPriceNumber?: 'ASC' | 'DESC' | null;
+      endPriceNumber?: 'ASC' | 'DESC' | null;
+    },
     limit?: number,
     offset?: number,
   ): CancelablePromise<GetAssetsResponse> {
@@ -36,11 +55,13 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/profiles/{entityId}',
       path: {
-        'entityId': entityId,
+        entityId: entityId,
       },
       query: {
-        'limit': limit,
-        'offset': offset,
+        filter: filter,
+        sort: sort,
+        limit: limit,
+        offset: offset,
       },
     });
   }
@@ -58,7 +79,7 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/profiles/{entityId}/currencies',
       path: {
-        'entityId': entityId,
+        entityId: entityId,
       },
     });
   }
@@ -76,7 +97,7 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/profiles/{entityId}/native',
       path: {
-        'entityId': entityId,
+        entityId: entityId,
       },
     });
   }
@@ -96,7 +117,7 @@ export class AssetsService {
       method: 'POST',
       url: '/v1/assets/profiles/{entityId}/transfer-asset',
       path: {
-        'entityId': entityId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -118,7 +139,7 @@ export class AssetsService {
       method: 'POST',
       url: '/v1/assets/profiles/{entityId}/transfer-token',
       path: {
-        'entityId': entityId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -140,7 +161,7 @@ export class AssetsService {
       method: 'POST',
       url: '/v1/assets/profiles/{entityId}/transfer-native',
       path: {
-        'entityId': entityId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -150,6 +171,8 @@ export class AssetsService {
   /**
    * Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
    * @param assetAddress
+   * @param filter
+   * @param sort
    * @param limit
    * @param offset
    * @returns GetAssetsResponse
@@ -157,6 +180,24 @@ export class AssetsService {
    */
   public getContractAssets(
     assetAddress: string,
+    filter?: {
+      attributes?: Array<{
+        type?: string | null;
+        value?: string | null;
+      }> | null;
+      sellTypes?: Array<
+        'AscendingAuction' | 'DescendingAuction' | 'FixedPrice' | 'NotForSale'
+      > | null;
+    },
+    sort?: {
+      rarityScore?: 'ASC' | 'DESC' | null;
+      start?: 'ASC' | 'DESC' | null;
+      end?: 'ASC' | 'DESC' | null;
+      createdAt?: 'ASC' | 'DESC' | null;
+      fixedPriceNumber?: 'ASC' | 'DESC' | null;
+      startPriceNumber?: 'ASC' | 'DESC' | null;
+      endPriceNumber?: 'ASC' | 'DESC' | null;
+    },
     limit?: number,
     offset?: number,
   ): CancelablePromise<GetAssetsResponse> {
@@ -164,11 +205,13 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/{assetAddress}',
       path: {
-        'assetAddress': assetAddress,
+        assetAddress: assetAddress,
       },
       query: {
-        'limit': limit,
-        'offset': offset,
+        filter: filter,
+        sort: sort,
+        limit: limit,
+        offset: offset,
       },
     });
   }
@@ -190,13 +233,12 @@ export class AssetsService {
       method: 'GET',
       url: '/v1/assets/{assetAddress}/{assetId}',
       path: {
-        'assetAddress': assetAddress,
-        'assetId': assetId,
+        assetAddress: assetAddress,
+        assetId: assetId,
       },
       query: {
-        'entityId': entityId,
+        entityId: entityId,
       },
     });
   }
-
 }

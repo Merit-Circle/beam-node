@@ -19,4 +19,3 @@ export type GetAssetsResponse = {
     offset?: number;
   };
 };
-

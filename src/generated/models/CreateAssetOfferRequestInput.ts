@@ -13,7 +13,6 @@ export type CreateAssetOfferRequestInput = {
 };
 
 export namespace CreateAssetOfferRequestInput {
-
   export enum currency {
     AVAX = 'Avax',
     ETH = 'Eth',
@@ -26,7 +25,4 @@ export namespace CreateAssetOfferRequestInput {
     WMATIC = 'Wmatic',
     WMC = 'Wmc',
   }
-
-
 }
-

@@ -17,16 +17,17 @@ import type { GetChainCurrenciesResponse } from '../models/GetChainCurrenciesRes
 import type { SellAssetRequestInput } from '../models/SellAssetRequestInput';
 import type { SellAssetResponse } from '../models/SellAssetResponse';
 
-import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
+import type { CancelablePromise } from '../core/CancelablePromise';
 
 export class MarketplaceService {
-
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
    * Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
    * @param gameId
+   * @param filter
+   * @param sort
    * @param limit
    * @param offset
    * @returns GetAssetListingsResponse
@@ -34,6 +35,24 @@ export class MarketplaceService {
    */
   public getListedAssets(
     gameId: string,
+    filter?: {
+      attributes?: Array<{
+        type?: string | null;
+        value?: string | null;
+      }> | null;
+      sellTypes?: Array<
+        'AscendingAuction' | 'DescendingAuction' | 'FixedPrice' | 'NotForSale'
+      > | null;
+    },
+    sort?: {
+      rarityScore?: 'ASC' | 'DESC' | null;
+      start?: 'ASC' | 'DESC' | null;
+      end?: 'ASC' | 'DESC' | null;
+      createdAt?: 'ASC' | 'DESC' | null;
+      fixedPriceNumber?: 'ASC' | 'DESC' | null;
+      startPriceNumber?: 'ASC' | 'DESC' | null;
+      endPriceNumber?: 'ASC' | 'DESC' | null;
+    },
     limit?: number,
     offset?: number,
   ): CancelablePromise<GetAssetListingsResponse> {
@@ -41,11 +60,13 @@ export class MarketplaceService {
       method: 'GET',
       url: '/v1/marketplace',
       path: {
-        'gameId': gameId,
+        gameId: gameId,
       },
       query: {
-        'limit': limit,
-        'offset': offset,
+        filter: filter,
+        sort: sort,
+        limit: limit,
+        offset: offset,
       },
     });
   }
@@ -53,6 +74,8 @@ export class MarketplaceService {
   /**
    * Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
    * @param entityId
+   * @param filter
+   * @param sort
    * @param limit
    * @param offset
    * @returns GetAssetListingsResponse
@@ -60,6 +83,24 @@ export class MarketplaceService {
    */
   public getListedAssetsForProfile(
     entityId: string,
+    filter?: {
+      attributes?: Array<{
+        type?: string | null;
+        value?: string | null;
+      }> | null;
+      sellTypes?: Array<
+        'AscendingAuction' | 'DescendingAuction' | 'FixedPrice' | 'NotForSale'
+      > | null;
+    },
+    sort?: {
+      rarityScore?: 'ASC' | 'DESC' | null;
+      start?: 'ASC' | 'DESC' | null;
+      end?: 'ASC' | 'DESC' | null;
+      createdAt?: 'ASC' | 'DESC' | null;
+      fixedPriceNumber?: 'ASC' | 'DESC' | null;
+      startPriceNumber?: 'ASC' | 'DESC' | null;
+      endPriceNumber?: 'ASC' | 'DESC' | null;
+    },
     limit?: number,
     offset?: number,
   ): CancelablePromise<GetAssetListingsResponse> {
@@ -67,11 +108,13 @@ export class MarketplaceService {
       method: 'GET',
       url: '/v1/marketplace/profiles/{entityId}',
       path: {
-        'entityId': entityId,
+        entityId: entityId,
       },
       query: {
-        'limit': limit,
-        'offset': offset,
+        filter: filter,
+        sort: sort,
+        limit: limit,
+        offset: offset,
       },
     });
   }
@@ -91,7 +134,7 @@ export class MarketplaceService {
       method: 'POST',
       url: '/v1/marketplace/profiles/{entityId}/listing',
       path: {
-        'entityId': entityId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -115,8 +158,8 @@ export class MarketplaceService {
       method: 'POST',
       url: '/v1/marketplace/profiles/{entityId}/listing/{orderId}',
       path: {
-        'entityId': entityId,
-        'orderId': orderId,
+        entityId: entityId,
+        orderId: orderId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -140,8 +183,8 @@ export class MarketplaceService {
       method: 'DELETE',
       url: '/v1/marketplace/profiles/{entityId}/listing/{orderId}',
       path: {
-        'entityId': entityId,
-        'orderId': orderId,
+        entityId: entityId,
+        orderId: orderId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -163,7 +206,7 @@ export class MarketplaceService {
       method: 'POST',
       url: '/v1/marketplace/profiles/{entityId}/offers',
       path: {
-        'entityId': entityId,
+        entityId: entityId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -183,7 +226,7 @@ export class MarketplaceService {
       method: 'GET',
       url: '/v1/marketplace/profiles/{entityId}/offers',
       path: {
-        'entityId': entityId,
+        entityId: entityId,
       },
     });
   }
@@ -203,8 +246,8 @@ export class MarketplaceService {
       method: 'GET',
       url: '/v1/marketplace/profiles/{entityId}/offers/asset/{marketplaceId}',
       path: {
-        'entityId': entityId,
-        'marketplaceId': marketplaceId,
+        entityId: entityId,
+        marketplaceId: marketplaceId,
       },
     });
   }
@@ -226,8 +269,8 @@ export class MarketplaceService {
       method: 'POST',
       url: '/v1/marketplace/profiles/{entityId}/offers/{offerId}/accept',
       path: {
-        'entityId': entityId,
-        'offerId': offerId,
+        entityId: entityId,
+        offerId: offerId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -251,8 +294,8 @@ export class MarketplaceService {
       method: 'DELETE',
       url: '/v1/marketplace/profiles/{entityId}/offers/{offerId}',
       path: {
-        'entityId': entityId,
-        'offerId': offerId,
+        entityId: entityId,
+        offerId: offerId,
       },
       body: requestBody,
       mediaType: 'application/json',
@@ -272,7 +315,7 @@ export class MarketplaceService {
       method: 'GET',
       url: '/v1/marketplace/offers/asset/{marketplaceId}',
       path: {
-        'marketplaceId': marketplaceId,
+        marketplaceId: marketplaceId,
       },
     });
   }
@@ -289,9 +332,8 @@ export class MarketplaceService {
       method: 'GET',
       url: '/v1/marketplace/chain-currencies/{chainId}',
       path: {
-        'chainId': chainId,
+        chainId: chainId,
       },
     });
   }
-
 }
