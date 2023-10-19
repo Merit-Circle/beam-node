@@ -3,7 +3,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreateProfileRequestInput = {
-  entityId: string;
-  chainId?: number;
+export type RemovePolicyResponse = {
+  success: boolean;
 };

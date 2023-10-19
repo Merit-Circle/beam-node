@@ -14,4 +14,5 @@ export type TransferAssetRequestInput = {
   optimistic?: boolean;
   sponsor?: boolean;
   policyId?: string;
+  chainId?: number;
 };

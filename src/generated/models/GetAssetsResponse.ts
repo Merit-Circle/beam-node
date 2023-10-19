@@ -12,6 +12,26 @@ export type GetAssetsResponse = {
     assetAddress: string;
     assetId: string;
     quantity: number;
+    owners: Array<{
+      address: string;
+      quantity: number;
+    }>;
+    rarity?:
+      | 'Common'
+      | 'ExtremelyRare'
+      | 'Rare'
+      | 'Uncommon'
+      | 'VeryRare'
+      | null;
+    rarityScore?: number | null;
+    attributes?: Array<{
+      type?: string | null;
+      value?: string | null;
+      rarity?: number | null;
+      displayType?: string | null;
+      maxValue?: number | null;
+    }> | null;
+    chainId?: number;
   }>;
   pagination: {
     count: number;

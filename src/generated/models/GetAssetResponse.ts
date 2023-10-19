@@ -26,7 +26,7 @@ export type GetAssetResponse = {
   indexerDataSyncedAt?: string | null;
   attributes?: Array<{
     type?: string | null;
-    value: string;
+    value?: string | null;
     rarity?: number | null;
     displayType?: string | null;
     maxValue?: number | null;

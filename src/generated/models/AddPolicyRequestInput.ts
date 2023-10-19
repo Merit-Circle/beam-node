@@ -3,7 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type CreateProfileRequestInput = {
-  entityId: string;
+export type AddPolicyRequestInput = {
+  tokenAddress: string;
+  exchangeRate: number;
   chainId?: number;
 };
