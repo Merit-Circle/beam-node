@@ -17,6 +17,7 @@ export class ExchangeService {
    * @param tokenIn
    * @param tokenOut
    * @param amountOut
+   * @param chainId
    * @returns GetQuoteResponse
    * @throws ApiError
    */
@@ -24,6 +25,7 @@ export class ExchangeService {
     tokenIn: string,
     tokenOut: string,
     amountOut: string,
+    chainId?: number,
   ): CancelablePromise<GetQuoteResponse> {
     return this.httpRequest.request({
       method: 'GET',
@@ -32,6 +34,7 @@ export class ExchangeService {
         tokenIn: tokenIn,
         tokenOut: tokenOut,
         amountOut: amountOut,
+        chainId: chainId,
       },
     });
   }
@@ -41,6 +44,7 @@ export class ExchangeService {
    * @param tokenIn
    * @param tokenOut
    * @param amountIn
+   * @param chainId
    * @returns GetQuoteResponse
    * @throws ApiError
    */
@@ -48,6 +52,7 @@ export class ExchangeService {
     tokenIn: string,
     tokenOut: string,
     amountIn: string,
+    chainId?: number,
   ): CancelablePromise<GetQuoteResponse> {
     return this.httpRequest.request({
       method: 'GET',
@@ -56,6 +61,7 @@ export class ExchangeService {
         tokenIn: tokenIn,
         tokenOut: tokenOut,
         amountIn: amountIn,
+        chainId: chainId,
       },
     });
   }

@@ -10,6 +10,7 @@ export type CreateAssetOfferRequestInput = {
   startTime?: string;
   endTime?: string;
   currency?: CreateAssetOfferRequestInput.currency;
+  chainId?: number;
 };
 
 export namespace CreateAssetOfferRequestInput {

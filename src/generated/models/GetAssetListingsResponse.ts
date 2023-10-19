@@ -16,6 +16,8 @@ export type GetAssetListingsResponse = {
     startTime: string | null;
     endTime: string | null;
     quantityListed: number;
+    quantityFilled: number;
+    quantityAvailable: number;
     orderId: string;
     expiresAt: string;
     sellerAddress: string;
@@ -27,6 +29,22 @@ export type GetAssetListingsResponse = {
       assetType: string;
       assetAddress: string;
       assetId: string;
+      rarity?:
+        | 'Common'
+        | 'ExtremelyRare'
+        | 'Rare'
+        | 'Uncommon'
+        | 'VeryRare'
+        | null;
+      rarityScore?: number | null;
+      attributes?: Array<{
+        type?: string | null;
+        value?: string | null;
+        rarity?: number | null;
+        displayType?: string | null;
+        maxValue?: number | null;
+      }> | null;
+      chainId?: number;
     };
   }>;
   pagination: {

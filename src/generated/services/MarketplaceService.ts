@@ -216,17 +216,22 @@ export class MarketplaceService {
   /**
    * Get all offers that player created
    * @param entityId
+   * @param chainId
    * @returns GetAssetOffersResponse
    * @throws ApiError
    */
   public getPlayerOffers(
     entityId: string,
+    chainId?: number,
   ): CancelablePromise<GetAssetOffersResponse> {
     return this.httpRequest.request({
       method: 'GET',
       url: '/v1/marketplace/profiles/{entityId}/offers',
       path: {
         entityId: entityId,
+      },
+      query: {
+        chainId: chainId,
       },
     });
   }
@@ -235,12 +240,14 @@ export class MarketplaceService {
    * Get all asset offers that player created
    * @param entityId
    * @param marketplaceId
+   * @param chainId
    * @returns GetAssetOffersResponse
    * @throws ApiError
    */
   public getPlayerAssetOffers(
     entityId: string,
     marketplaceId: string,
+    chainId?: number,
   ): CancelablePromise<GetAssetOffersResponse> {
     return this.httpRequest.request({
       method: 'GET',
@@ -248,6 +255,9 @@ export class MarketplaceService {
       path: {
         entityId: entityId,
         marketplaceId: marketplaceId,
+      },
+      query: {
+        chainId: chainId,
       },
     });
   }

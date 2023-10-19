@@ -11,4 +11,5 @@ export type TransferTokenRequestInput = {
   optimistic?: boolean;
   sponsor?: boolean;
   policyId?: string;
+  chainId?: number;
 };

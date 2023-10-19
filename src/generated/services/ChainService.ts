@@ -13,13 +13,17 @@ export class ChainService {
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
   /**
+   * @param chainId
    * @returns GetChainResponse
    * @throws ApiError
    */
-  public chain(): CancelablePromise<GetChainResponse> {
+  public chain(chainId?: number): CancelablePromise<GetChainResponse> {
     return this.httpRequest.request({
       method: 'GET',
       url: '/v1/chain',
+      query: {
+        chainId: chainId,
+      },
     });
   }
 

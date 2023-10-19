@@ -21,6 +21,7 @@ export class AssetsService {
   /**
    * Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
    * @param entityId
+   * @param chainId
    * @param filter
    * @param sort
    * @param limit
@@ -30,6 +31,7 @@ export class AssetsService {
    */
   public getProfileAssets(
     entityId: string,
+    chainId?: number,
     filter?: {
       attributes?: Array<{
         type?: string | null;
@@ -58,6 +60,7 @@ export class AssetsService {
         entityId: entityId,
       },
       query: {
+        chainId: chainId,
         filter: filter,
         sort: sort,
         limit: limit,
@@ -69,11 +72,13 @@ export class AssetsService {
   /**
    * Get all the currencies owned by an account (ERC20)
    * @param entityId
+   * @param chainId
    * @returns GetProfileCurrenciesResponse
    * @throws ApiError
    */
   public getProfileCurrencies(
     entityId: string,
+    chainId?: number,
   ): CancelablePromise<GetProfileCurrenciesResponse> {
     return this.httpRequest.request({
       method: 'GET',
@@ -81,23 +86,31 @@ export class AssetsService {
       path: {
         entityId: entityId,
       },
+      query: {
+        chainId: chainId,
+      },
     });
   }
 
   /**
    * Get the native token balance
    * @param entityId
+   * @param chainId
    * @returns GetProfileNativeCurrencyResponse
    * @throws ApiError
    */
   public getProfileNativeCurrency(
     entityId: string,
+    chainId?: number,
   ): CancelablePromise<GetProfileNativeCurrencyResponse> {
     return this.httpRequest.request({
       method: 'GET',
       url: '/v1/assets/profiles/{entityId}/native',
       path: {
         entityId: entityId,
+      },
+      query: {
+        chainId: chainId,
       },
     });
   }
@@ -171,6 +184,7 @@ export class AssetsService {
   /**
    * Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
    * @param assetAddress
+   * @param chainId
    * @param filter
    * @param sort
    * @param limit
@@ -180,6 +194,7 @@ export class AssetsService {
    */
   public getContractAssets(
     assetAddress: string,
+    chainId?: number,
     filter?: {
       attributes?: Array<{
         type?: string | null;
@@ -208,6 +223,7 @@ export class AssetsService {
         assetAddress: assetAddress,
       },
       query: {
+        chainId: chainId,
         filter: filter,
         sort: sort,
         limit: limit,
@@ -220,6 +236,7 @@ export class AssetsService {
    * Get a single NFT (e.g. ERC721 / ERC1155)
    * @param assetAddress
    * @param assetId
+   * @param chainId
    * @param entityId
    * @returns GetAssetResponse
    * @throws ApiError
@@ -227,6 +244,7 @@ export class AssetsService {
   public getAsset(
     assetAddress: string,
     assetId: string,
+    chainId?: number,
     entityId?: string,
   ): CancelablePromise<GetAssetResponse> {
     return this.httpRequest.request({
@@ -237,6 +255,7 @@ export class AssetsService {
         assetId: assetId,
       },
       query: {
+        chainId: chainId,
         entityId: entityId,
       },
     });

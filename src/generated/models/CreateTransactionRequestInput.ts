@@ -13,4 +13,5 @@ export type CreateTransactionRequestInput = {
   optimistic?: boolean;
   sponsor?: boolean;
   policyId?: string;
+  chainId?: number;
 };

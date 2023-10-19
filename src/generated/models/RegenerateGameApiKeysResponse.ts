@@ -11,6 +11,7 @@ export type RegenerateGameApiKeysResponse = {
   description: string | null;
   coverImageUrl: string | null;
   logoImageUrl: string | null;
+  chainIds: number[];
   apiKeys: Array<{
     type: 'ReadOnly' | 'ReadAndWrite' | 'Regenerate';
     id: string;

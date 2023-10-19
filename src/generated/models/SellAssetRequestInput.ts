@@ -13,6 +13,7 @@ export type SellAssetRequestInput = {
   currency?: SellAssetRequestInput.currency;
   sponsor?: boolean;
   policyId?: string;
+  chainId?: number;
 };
 
 export namespace SellAssetRequestInput {
