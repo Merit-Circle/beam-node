@@ -21,6 +21,7 @@ export type GetAssetListingsResponse = {
     orderId: string;
     expiresAt: string;
     sellerAddress: string;
+    sellerEntityId?: string;
     contractId: string;
     nft: {
       marketplaceId: string;

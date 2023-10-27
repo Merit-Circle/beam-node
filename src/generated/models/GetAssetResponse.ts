@@ -75,6 +75,7 @@ export type GetAssetResponse = {
   } | null;
   ownershipByAddresses?: Array<{
     address: string;
+    entityId?: string;
     quantity: number;
     user: {
       _id: string;

@@ -6,6 +6,8 @@ export { Beam, Beam as default } from './Beam';
 
 export type { AcceptAssetOfferRequestInput } from './generated/models/AcceptAssetOfferRequestInput';
 export type { AcceptOfferResponse } from './generated/models/AcceptOfferResponse';
+export { AddContractRequestInput } from './generated/models/AddContractRequestInput';
+export { AddContractResponse } from './generated/models/AddContractResponse';
 export type { AddPolicyRequestInput } from './generated/models/AddPolicyRequestInput';
 export type { AddPolicyResponse } from './generated/models/AddPolicyResponse';
 export type { BuyAssetRequestInput } from './generated/models/BuyAssetRequestInput';
@@ -42,6 +44,7 @@ export type { GetTransactionResponse } from './generated/models/GetTransactionRe
 export type { GetTransactionsResponse } from './generated/models/GetTransactionsResponse';
 export type { RegenerateGameApiKeysRequestInput } from './generated/models/RegenerateGameApiKeysRequestInput';
 export type { RegenerateGameApiKeysResponse } from './generated/models/RegenerateGameApiKeysResponse';
+export type { RemoveContractResponse } from './generated/models/RemoveContractResponse';
 export type { RemovePolicyResponse } from './generated/models/RemovePolicyResponse';
 export { SellAssetRequestInput } from './generated/models/SellAssetRequestInput';
 export type { SellAssetResponse } from './generated/models/SellAssetResponse';

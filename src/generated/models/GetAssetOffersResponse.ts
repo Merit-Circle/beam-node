@@ -22,6 +22,7 @@ export type GetAssetOffersResponse = {
     quantityFilled: number;
     quantityAvailable: number;
     offerer: string;
+    offererEntityId: string;
     tokenAmount: string;
     tokenAmountNumber: number;
     startTime: string;

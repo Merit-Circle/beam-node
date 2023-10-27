@@ -12,6 +12,8 @@ export type { OpenAPIConfig } from './core/OpenAPI';
 
 export type { AcceptAssetOfferRequestInput } from './models/AcceptAssetOfferRequestInput';
 export type { AcceptOfferResponse } from './models/AcceptOfferResponse';
+export { AddContractRequestInput } from './models/AddContractRequestInput';
+export { AddContractResponse } from './models/AddContractResponse';
 export type { AddPolicyRequestInput } from './models/AddPolicyRequestInput';
 export type { AddPolicyResponse } from './models/AddPolicyResponse';
 export type { BuyAssetRequestInput } from './models/BuyAssetRequestInput';
@@ -48,6 +50,7 @@ export type { GetTransactionResponse } from './models/GetTransactionResponse';
 export type { GetTransactionsResponse } from './models/GetTransactionsResponse';
 export type { RegenerateGameApiKeysRequestInput } from './models/RegenerateGameApiKeysRequestInput';
 export type { RegenerateGameApiKeysResponse } from './models/RegenerateGameApiKeysResponse';
+export type { RemoveContractResponse } from './models/RemoveContractResponse';
 export type { RemovePolicyResponse } from './models/RemovePolicyResponse';
 export { SellAssetRequestInput } from './models/SellAssetRequestInput';
 export type { SellAssetResponse } from './models/SellAssetResponse';
