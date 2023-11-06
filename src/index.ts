@@ -32,7 +32,6 @@ export type { GetAssetListingsResponse } from './generated/models/GetAssetListin
 export type { GetAssetOffersResponse } from './generated/models/GetAssetOffersResponse';
 export { GetAssetResponse } from './generated/models/GetAssetResponse';
 export { GetAssetsBodyInput } from './generated/models/GetAssetsBodyInput';
-export type { GetAssetSortOptionsResponse } from './generated/models/GetAssetSortOptionsResponse';
 export type { GetAssetsResponse } from './generated/models/GetAssetsResponse';
 export type { GetChainCurrenciesResponse } from './generated/models/GetChainCurrenciesResponse';
 export type { GetChainResponse } from './generated/models/GetChainResponse';

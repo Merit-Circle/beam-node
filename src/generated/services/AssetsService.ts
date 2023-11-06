@@ -3,7 +3,6 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { GetAssetResponse } from '../models/GetAssetResponse';
-import type { GetAssetSortOptionsResponse } from '../models/GetAssetSortOptionsResponse';
 import type { GetAssetsBodyInput } from '../models/GetAssetsBodyInput';
 import type { GetAssetsResponse } from '../models/GetAssetsResponse';
 import type { GetProfileCurrenciesResponse } from '../models/GetProfileCurrenciesResponse';
@@ -52,9 +51,9 @@ export class AssetsService {
    * Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
    * This endpoint is deprecated. Use POST route instead.
    * @param entityId
+   * @param chainId
    * @param limit
    * @param offset
-   * @param chainId
    * @param filter
    * @param sort
    * @returns GetAssetsResponse
@@ -62,9 +61,9 @@ export class AssetsService {
    */
   public getProfileAssetsForGame(
     entityId: string,
+    chainId?: number,
     limit?: number,
     offset?: number,
-    chainId?: number,
     filter?: {
       attributes?: Array<{
         type?: string | null;
@@ -108,24 +107,12 @@ export class AssetsService {
         entityId: entityId,
       },
       query: {
+        chainId: chainId,
         limit: limit,
         offset: offset,
-        chainId: chainId,
         filter: filter,
         sort: sort,
       },
-    });
-  }
-
-  /**
-   * Get all the asset sorting optiond (NFT assets, e.g. ERC721 / ERC1155)
-   * @returns GetAssetSortOptionsResponse
-   * @throws ApiError
-   */
-  public getAssetSortOptions(): CancelablePromise<GetAssetSortOptionsResponse> {
-    return this.httpRequest.request({
-      method: 'GET',
-      url: '/v1/assets/asset-sort-options',
     });
   }
 
@@ -273,9 +260,9 @@ export class AssetsService {
    * Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
    * This endpoint is deprecated. Use POST route instead.
    * @param assetAddress
+   * @param chainId
    * @param limit
    * @param offset
-   * @param chainId
    * @param filter
    * @param sort
    * @returns GetAssetsResponse
@@ -283,9 +270,9 @@ export class AssetsService {
    */
   public getContractAssets(
     assetAddress: string,
+    chainId?: number,
     limit?: number,
     offset?: number,
-    chainId?: number,
     filter?: {
       attributes?: Array<{
         type?: string | null;
@@ -329,9 +316,9 @@ export class AssetsService {
         assetAddress: assetAddress,
       },
       query: {
+        chainId: chainId,
         limit: limit,
         offset: offset,
-        chainId: chainId,
         filter: filter,
         sort: sort,
       },

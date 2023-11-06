@@ -45,18 +45,18 @@ export class MarketplaceService {
    * @deprecated
    * Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
    * This endpoint is deprecated. Use POST route instead.
+   * @param gameId
    * @param limit
    * @param offset
-   * @param gameId
    * @param filter
    * @param sort
    * @returns GetAssetListingsResponse
    * @throws ApiError
    */
   public getListedAssets(
+    gameId?: string,
     limit?: number,
     offset?: number,
-    gameId?: string,
     filter?: {
       attributes?: Array<{
         type?: string | null;
