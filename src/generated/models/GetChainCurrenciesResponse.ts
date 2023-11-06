@@ -8,12 +8,14 @@ export type GetChainCurrenciesResponse = {
     decimals: number;
     currency:
       | 'Avax'
+      | 'Beam'
       | 'Eth'
       | 'Matic'
       | 'Mc'
       | 'Usdc'
       | 'Usdt'
       | 'Wavax'
+      | 'Wbeam'
       | 'Weth'
       | 'Wmatic'
       | 'Wmc';

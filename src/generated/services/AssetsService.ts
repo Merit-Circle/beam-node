@@ -3,6 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { GetAssetResponse } from '../models/GetAssetResponse';
+import type { GetAssetSortOptionsResponse } from '../models/GetAssetSortOptionsResponse';
+import type { GetAssetsBodyInput } from '../models/GetAssetsBodyInput';
 import type { GetAssetsResponse } from '../models/GetAssetsResponse';
 import type { GetProfileCurrenciesResponse } from '../models/GetProfileCurrenciesResponse';
 import type { GetProfileNativeCurrencyResponse } from '../models/GetProfileNativeCurrencyResponse';
@@ -21,16 +23,47 @@ export class AssetsService {
   /**
    * Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
    * @param entityId
+   * @param requestBody
    * @param chainId
-   * @param filter
-   * @param sort
-   * @param limit
-   * @param offset
    * @returns GetAssetsResponse
    * @throws ApiError
    */
-  public getProfileAssets(
+  public getProfileAssetsForGamePost(
     entityId: string,
+    requestBody: GetAssetsBodyInput,
+    chainId?: number,
+  ): CancelablePromise<GetAssetsResponse> {
+    return this.httpRequest.request({
+      method: 'POST',
+      url: '/v1/assets/profiles/{entityId}',
+      path: {
+        entityId: entityId,
+      },
+      query: {
+        chainId: chainId,
+      },
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * @deprecated
+   * Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
+   * This endpoint is deprecated. Use POST route instead.
+   * @param entityId
+   * @param limit
+   * @param offset
+   * @param chainId
+   * @param filter
+   * @param sort
+   * @returns GetAssetsResponse
+   * @throws ApiError
+   */
+  public getProfileAssetsForGame(
+    entityId: string,
+    limit?: number,
+    offset?: number,
     chainId?: number,
     filter?: {
       attributes?: Array<{
@@ -39,6 +72,23 @@ export class AssetsService {
       }> | null;
       sellTypes?: Array<
         'AscendingAuction' | 'DescendingAuction' | 'FixedPrice' | 'NotForSale'
+      > | null;
+      currencies?: Array<
+        | 'Avax'
+        | 'Beam'
+        | 'Eth'
+        | 'Matic'
+        | 'Mc'
+        | 'Usdc'
+        | 'Usdt'
+        | 'Wavax'
+        | 'Wbeam'
+        | 'Weth'
+        | 'Wmatic'
+        | 'Wmc'
+      > | null;
+      rarities?: Array<
+        'Common' | 'ExtremelyRare' | 'Rare' | 'Uncommon' | 'VeryRare'
       > | null;
     },
     sort?: {
@@ -50,8 +100,6 @@ export class AssetsService {
       startPriceNumber?: 'ASC' | 'DESC' | null;
       endPriceNumber?: 'ASC' | 'DESC' | null;
     },
-    limit?: number,
-    offset?: number,
   ): CancelablePromise<GetAssetsResponse> {
     return this.httpRequest.request({
       method: 'GET',
@@ -60,12 +108,24 @@ export class AssetsService {
         entityId: entityId,
       },
       query: {
+        limit: limit,
+        offset: offset,
         chainId: chainId,
         filter: filter,
         sort: sort,
-        limit: limit,
-        offset: offset,
       },
+    });
+  }
+
+  /**
+   * Get all the asset sorting optiond (NFT assets, e.g. ERC721 / ERC1155)
+   * @returns GetAssetSortOptionsResponse
+   * @throws ApiError
+   */
+  public getAssetSortOptions(): CancelablePromise<GetAssetSortOptionsResponse> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/v1/assets/asset-sort-options',
     });
   }
 
@@ -184,16 +244,47 @@ export class AssetsService {
   /**
    * Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
    * @param assetAddress
+   * @param requestBody
+   * @param chainId
+   * @returns GetAssetsResponse
+   * @throws ApiError
+   */
+  public getContractAssetsPost(
+    assetAddress: string,
+    requestBody: GetAssetsBodyInput,
+    chainId?: number,
+  ): CancelablePromise<GetAssetsResponse> {
+    return this.httpRequest.request({
+      method: 'POST',
+      url: '/v1/assets/{assetAddress}',
+      path: {
+        assetAddress: assetAddress,
+      },
+      query: {
+        chainId: chainId,
+      },
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * @deprecated
+   * Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
+   * This endpoint is deprecated. Use POST route instead.
+   * @param assetAddress
+   * @param limit
+   * @param offset
    * @param chainId
    * @param filter
    * @param sort
-   * @param limit
-   * @param offset
    * @returns GetAssetsResponse
    * @throws ApiError
    */
   public getContractAssets(
     assetAddress: string,
+    limit?: number,
+    offset?: number,
     chainId?: number,
     filter?: {
       attributes?: Array<{
@@ -202,6 +293,23 @@ export class AssetsService {
       }> | null;
       sellTypes?: Array<
         'AscendingAuction' | 'DescendingAuction' | 'FixedPrice' | 'NotForSale'
+      > | null;
+      currencies?: Array<
+        | 'Avax'
+        | 'Beam'
+        | 'Eth'
+        | 'Matic'
+        | 'Mc'
+        | 'Usdc'
+        | 'Usdt'
+        | 'Wavax'
+        | 'Wbeam'
+        | 'Weth'
+        | 'Wmatic'
+        | 'Wmc'
+      > | null;
+      rarities?: Array<
+        'Common' | 'ExtremelyRare' | 'Rare' | 'Uncommon' | 'VeryRare'
       > | null;
     },
     sort?: {
@@ -213,8 +321,6 @@ export class AssetsService {
       startPriceNumber?: 'ASC' | 'DESC' | null;
       endPriceNumber?: 'ASC' | 'DESC' | null;
     },
-    limit?: number,
-    offset?: number,
   ): CancelablePromise<GetAssetsResponse> {
     return this.httpRequest.request({
       method: 'GET',
@@ -223,11 +329,11 @@ export class AssetsService {
         assetAddress: assetAddress,
       },
       query: {
+        limit: limit,
+        offset: offset,
         chainId: chainId,
         filter: filter,
         sort: sort,
-        limit: limit,
-        offset: offset,
       },
     });
   }

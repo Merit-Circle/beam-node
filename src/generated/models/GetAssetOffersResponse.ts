@@ -9,12 +9,14 @@ export type GetAssetOffersResponse = {
     kind: 'SignedCollectionOrder' | 'SignedSingleOrder';
     currency:
       | 'Avax'
+      | 'Beam'
       | 'Eth'
       | 'Matic'
       | 'Mc'
       | 'Usdc'
       | 'Usdt'
       | 'Wavax'
+      | 'Wbeam'
       | 'Weth'
       | 'Wmatic'
       | 'Wmc';

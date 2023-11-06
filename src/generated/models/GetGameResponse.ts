@@ -26,6 +26,7 @@ export type GetGameResponse = {
   policies: Array<{
     model: 'ContractFunctions' | 'AccountFunctions';
     type: 'PayForUser' | 'ChargeCustomToken';
+    rateType: 'Fixed' | 'Dynamic' | null;
     id: string;
     createdAt: any;
     updatedAt: any;
@@ -34,6 +35,6 @@ export type GetGameResponse = {
     chainId: number;
     gameId: string;
     token: string | null;
-    exchangeRate: string | null;
+    amount: string | null;
   }>;
 };

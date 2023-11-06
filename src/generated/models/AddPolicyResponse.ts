@@ -7,5 +7,13 @@ export type AddPolicyResponse = {
   id: string;
   chainId: number;
   token: string | null;
-  exchangeRate: string | null;
+  amount: string | null;
+  rateType: AddPolicyResponse.rateType | null;
 };
+
+export namespace AddPolicyResponse {
+  export enum rateType {
+    FIXED = 'Fixed',
+    DYNAMIC = 'Dynamic',
+  }
+}

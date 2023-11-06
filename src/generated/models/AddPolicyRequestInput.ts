@@ -5,6 +5,14 @@
 
 export type AddPolicyRequestInput = {
   tokenAddress: string;
-  exchangeRate: number;
+  amount: number;
+  rateType: AddPolicyRequestInput.rateType;
   chainId?: number;
 };
+
+export namespace AddPolicyRequestInput {
+  export enum rateType {
+    FIXED = 'Fixed',
+    DYNAMIC = 'Dynamic',
+  }
+}

@@ -113,12 +113,14 @@ export namespace GetAssetResponse {
 
   export enum lastSoldTokenCurrency {
     AVAX = 'Avax',
+    BEAM = 'Beam',
     ETH = 'Eth',
     MATIC = 'Matic',
     MC = 'Mc',
     USDC = 'Usdc',
     USDT = 'Usdt',
     WAVAX = 'Wavax',
+    WBEAM = 'Wbeam',
     WETH = 'Weth',
     WMATIC = 'Wmatic',
     WMC = 'Wmc',
@@ -131,12 +133,14 @@ export namespace GetAssetResponse {
 
   export enum currencySymbol {
     AVAX = 'Avax',
+    BEAM = 'Beam',
     ETH = 'Eth',
     MATIC = 'Matic',
     MC = 'Mc',
     USDC = 'Usdc',
     USDT = 'Usdt',
     WAVAX = 'Wavax',
+    WBEAM = 'Wbeam',
     WETH = 'Weth',
     WMATIC = 'Wmatic',
     WMC = 'Wmc',
@@ -151,12 +155,14 @@ export namespace GetAssetResponse {
 
   export enum currency {
     AVAX = 'Avax',
+    BEAM = 'Beam',
     ETH = 'Eth',
     MATIC = 'Matic',
     MC = 'Mc',
     USDC = 'Usdc',
     USDT = 'Usdt',
     WAVAX = 'Wavax',
+    WBEAM = 'Wbeam',
     WETH = 'Weth',
     WMATIC = 'Wmatic',
     WMC = 'Wmc',

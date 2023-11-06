@@ -13,6 +13,7 @@ import type { CreateAssetOfferRequestInput } from '../models/CreateAssetOfferReq
 import type { CreateOfferResponse } from '../models/CreateOfferResponse';
 import type { GetAssetListingsResponse } from '../models/GetAssetListingsResponse';
 import type { GetAssetOffersResponse } from '../models/GetAssetOffersResponse';
+import type { GetAssetsBodyInput } from '../models/GetAssetsBodyInput';
 import type { GetChainCurrenciesResponse } from '../models/GetChainCurrenciesResponse';
 import type { SellAssetRequestInput } from '../models/SellAssetRequestInput';
 import type { SellAssetResponse } from '../models/SellAssetResponse';
@@ -25,16 +26,37 @@ export class MarketplaceService {
 
   /**
    * Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
+   * @param requestBody
+   * @returns GetAssetListingsResponse
+   * @throws ApiError
+   */
+  public getListedAssetsPost(
+    requestBody: GetAssetsBodyInput,
+  ): CancelablePromise<GetAssetListingsResponse> {
+    return this.httpRequest.request({
+      method: 'POST',
+      url: '/v1/marketplace',
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * @deprecated
+   * Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
+   * This endpoint is deprecated. Use POST route instead.
+   * @param limit
+   * @param offset
    * @param gameId
    * @param filter
    * @param sort
-   * @param limit
-   * @param offset
    * @returns GetAssetListingsResponse
    * @throws ApiError
    */
   public getListedAssets(
-    gameId: string,
+    limit?: number,
+    offset?: number,
+    gameId?: string,
     filter?: {
       attributes?: Array<{
         type?: string | null;
@@ -42,6 +64,23 @@ export class MarketplaceService {
       }> | null;
       sellTypes?: Array<
         'AscendingAuction' | 'DescendingAuction' | 'FixedPrice' | 'NotForSale'
+      > | null;
+      currencies?: Array<
+        | 'Avax'
+        | 'Beam'
+        | 'Eth'
+        | 'Matic'
+        | 'Mc'
+        | 'Usdc'
+        | 'Usdt'
+        | 'Wavax'
+        | 'Wbeam'
+        | 'Weth'
+        | 'Wmatic'
+        | 'Wmc'
+      > | null;
+      rarities?: Array<
+        'Common' | 'ExtremelyRare' | 'Rare' | 'Uncommon' | 'VeryRare'
       > | null;
     },
     sort?: {
@@ -53,8 +92,6 @@ export class MarketplaceService {
       startPriceNumber?: 'ASC' | 'DESC' | null;
       endPriceNumber?: 'ASC' | 'DESC' | null;
     },
-    limit?: number,
-    offset?: number,
   ): CancelablePromise<GetAssetListingsResponse> {
     return this.httpRequest.request({
       method: 'GET',
@@ -63,10 +100,10 @@ export class MarketplaceService {
         gameId: gameId,
       },
       query: {
-        filter: filter,
-        sort: sort,
         limit: limit,
         offset: offset,
+        filter: filter,
+        sort: sort,
       },
     });
   }
@@ -74,15 +111,41 @@ export class MarketplaceService {
   /**
    * Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
    * @param entityId
-   * @param filter
-   * @param sort
+   * @param requestBody
+   * @returns GetAssetListingsResponse
+   * @throws ApiError
+   */
+  public getListedAssetsForProfilePost(
+    entityId: string,
+    requestBody: GetAssetsBodyInput,
+  ): CancelablePromise<GetAssetListingsResponse> {
+    return this.httpRequest.request({
+      method: 'POST',
+      url: '/v1/marketplace/profiles/{entityId}',
+      path: {
+        entityId: entityId,
+      },
+      body: requestBody,
+      mediaType: 'application/json',
+    });
+  }
+
+  /**
+   * @deprecated
+   * Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
+   * This endpoint is deprecated. Use POST route instead.
+   * @param entityId
    * @param limit
    * @param offset
+   * @param filter
+   * @param sort
    * @returns GetAssetListingsResponse
    * @throws ApiError
    */
   public getListedAssetsForProfile(
     entityId: string,
+    limit?: number,
+    offset?: number,
     filter?: {
       attributes?: Array<{
         type?: string | null;
@@ -90,6 +153,23 @@ export class MarketplaceService {
       }> | null;
       sellTypes?: Array<
         'AscendingAuction' | 'DescendingAuction' | 'FixedPrice' | 'NotForSale'
+      > | null;
+      currencies?: Array<
+        | 'Avax'
+        | 'Beam'
+        | 'Eth'
+        | 'Matic'
+        | 'Mc'
+        | 'Usdc'
+        | 'Usdt'
+        | 'Wavax'
+        | 'Wbeam'
+        | 'Weth'
+        | 'Wmatic'
+        | 'Wmc'
+      > | null;
+      rarities?: Array<
+        'Common' | 'ExtremelyRare' | 'Rare' | 'Uncommon' | 'VeryRare'
       > | null;
     },
     sort?: {
@@ -101,8 +181,6 @@ export class MarketplaceService {
       startPriceNumber?: 'ASC' | 'DESC' | null;
       endPriceNumber?: 'ASC' | 'DESC' | null;
     },
-    limit?: number,
-    offset?: number,
   ): CancelablePromise<GetAssetListingsResponse> {
     return this.httpRequest.request({
       method: 'GET',
@@ -111,10 +189,10 @@ export class MarketplaceService {
         entityId: entityId,
       },
       query: {
-        filter: filter,
-        sort: sort,
         limit: limit,
         offset: offset,
+        filter: filter,
+        sort: sort,
       },
     });
   }

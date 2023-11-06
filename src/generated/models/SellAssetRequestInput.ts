@@ -26,12 +26,14 @@ export namespace SellAssetRequestInput {
 
   export enum currency {
     AVAX = 'Avax',
+    BEAM = 'Beam',
     ETH = 'Eth',
     MATIC = 'Matic',
     MC = 'Mc',
     USDC = 'Usdc',
     USDT = 'Usdt',
     WAVAX = 'Wavax',
+    WBEAM = 'Wbeam',
     WETH = 'Weth',
     WMATIC = 'Wmatic',
     WMC = 'Wmc',

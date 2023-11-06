@@ -14,6 +14,7 @@ export type GetAssetsResponse = {
     quantity: number;
     owners: Array<{
       address: string;
+      entityId?: string;
       quantity: number;
     }>;
     rarity?:

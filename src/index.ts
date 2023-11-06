@@ -8,8 +8,8 @@ export type { AcceptAssetOfferRequestInput } from './generated/models/AcceptAsse
 export type { AcceptOfferResponse } from './generated/models/AcceptOfferResponse';
 export { AddContractRequestInput } from './generated/models/AddContractRequestInput';
 export { AddContractResponse } from './generated/models/AddContractResponse';
-export type { AddPolicyRequestInput } from './generated/models/AddPolicyRequestInput';
-export type { AddPolicyResponse } from './generated/models/AddPolicyResponse';
+export { AddPolicyRequestInput } from './generated/models/AddPolicyRequestInput';
+export { AddPolicyResponse } from './generated/models/AddPolicyResponse';
 export type { BuyAssetRequestInput } from './generated/models/BuyAssetRequestInput';
 export type { BuyAssetResponse } from './generated/models/BuyAssetResponse';
 export type { CancelAssetListingRequestInput } from './generated/models/CancelAssetListingRequestInput';
@@ -31,6 +31,8 @@ export type { GetAllProfilesResponse } from './generated/models/GetAllProfilesRe
 export type { GetAssetListingsResponse } from './generated/models/GetAssetListingsResponse';
 export type { GetAssetOffersResponse } from './generated/models/GetAssetOffersResponse';
 export { GetAssetResponse } from './generated/models/GetAssetResponse';
+export { GetAssetsBodyInput } from './generated/models/GetAssetsBodyInput';
+export type { GetAssetSortOptionsResponse } from './generated/models/GetAssetSortOptionsResponse';
 export type { GetAssetsResponse } from './generated/models/GetAssetsResponse';
 export type { GetChainCurrenciesResponse } from './generated/models/GetChainCurrenciesResponse';
 export type { GetChainResponse } from './generated/models/GetChainResponse';
